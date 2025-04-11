@@ -5,15 +5,14 @@
       "src": "package.json",
       "use": "@vercel/node",
       "config": {
-        "distDir": ".vercel_build_output" 
+        "distDir": ".vercel_build_output"
       }
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "/index.js" 
+      "dest": "/entry.server.tsx"
     }
   ]
 }
-  
