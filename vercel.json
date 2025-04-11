@@ -1,18 +1,11 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@vercel/node",
-      "config": {
-        "distDir": ".vercel_build_output"
-      }
-    }
-  ],
+  "version": 3,
+  "buildCommand": "npm run build",
+  "outputDirectory": ".vercel/output",
   "routes": [
     {
-      "src": "/(.*)",
-      "dest": "/entry.server.tsx"
+      "src": "/.*",
+      "dest": "entry.server.tsx"
     }
   ]
 }
