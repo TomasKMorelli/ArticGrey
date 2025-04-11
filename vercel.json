@@ -11,6 +11,10 @@
   ],
   "routes": [
     {
+      "src": "/:locale/(.*)",
+      "dest": "/:locale/$1"
+    },
+    {
       "src": "/(.*)",
       "dest": "/entry.server.tsx"
     }
