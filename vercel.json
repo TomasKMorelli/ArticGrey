@@ -11,8 +11,8 @@
   ],
   "routes": [
     {
-      "src": "/:locale/(.*)",
-      "dest": "/:locale/$1"
+      "src": "/(en|es|fr|de|it)/(.*)",
+      "dest": "/$1/$2"
     },
     {
       "src": "/(.*)",
