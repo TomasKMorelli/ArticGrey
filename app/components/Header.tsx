@@ -1,5 +1,14 @@
-
-import type {HeaderQuery, CartApiQueryFragment} from 'storefrontapi.generated';
+import {
+  Search,
+  User,
+  ShoppingBag,
+  CircleUserRound,
+} from 'lucide-react';
+import type {
+  HeaderQuery,
+  CartApiQueryFragment,
+} from 'storefrontapi.generated';
+import { Link } from '@remix-run/react';
 
 interface HeaderProps {
   header: HeaderQuery;
@@ -15,10 +24,49 @@ export const Header = ({
   publicStoreDomain,
 }: HeaderProps) => {
   return (
-    <div>
-      {/* Acá iría  NavBar */}
-      NavBar
-    </div>
+    <nav className="w-full max-w-[1520px] h-[70px] mx-auto mt-5 px-6 rounded-lg flex flex-wrap items-center justify-between bg-white shadow">
+      {/* Logo */}
+      <div className="flex items-center gap-4 min-w-[180px]">
+        <Link to="/">
+          <span className="font-bold text-lg whitespace-nowrap">
+            UNCMFRT.COM
+          </span>
+        </Link>
+      </div>
+
+
+      <ul className="flex flex-wrap justify-center gap-4 text-sm text-black">
+        <Search className="w-5 h-5 cursor-pointer" />
+        <Link to="/" className="cursor-pointer">
+          Shop
+        </Link>
+        <Link to="/" className="cursor-pointer font-Rubik">
+          Science
+        </Link>
+        <Link to="/" className="cursor-pointer">
+          Podcasts
+        </Link>
+        <Link to="/" className="cursor-pointer">
+          Trainers
+        </Link>
+        <Link to="/" className="cursor-pointer">
+          Blog
+        </Link>
+      </ul>
+
+
+      <div className="flex items-center gap-4 min-w-[180px] justify-end flex-wrap">
+        <button className="flex items-center justify-center h-[45px] px-[16px] pr-[6px] gap-[10px] rounded-[8px] bg-gray-100 text-sm">
+          Men <CircleUserRound className="w-4 h-4" />
+        </button>
+        <button className="h-[45px] px-[24px] rounded-[8px] bg-black text-white text-sm font-medium">
+          Take The Quiz
+        </button>
+        <User className="w-5 h-5 cursor-pointer" />
+        <ShoppingBag className="w-5 h-5 cursor-pointer" />
+      </div>
+    </nav>
   );
 };
 
+export default Header;
