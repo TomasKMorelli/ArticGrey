@@ -1,9 +1,17 @@
+import Hero from "~/components/Hero";
 
-export const Homepage = ()=>{
+
+
+
+
+
+export const Homepage : React.FC = ()=>{
 
 
 return ( 
-  <div></div>
+  <div>
+<Hero/>
+  </div>
 )
 
 }

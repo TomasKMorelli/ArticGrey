@@ -4,3 +4,16 @@
  */
 
 @import 'tailwindcss';
+
+@keyframes marquee {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+  
+  :root {
+    --animation-marquee: marquee 7s linear infinite;
+  }
