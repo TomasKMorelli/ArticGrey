@@ -3,7 +3,8 @@ import GoalsComponent from "~/components/Goals";
 import InstagramComponent from "~/components/InstagramComponent";
 import Articles from "~/components/Articles";
 import Generation from "~/components/Generation";
-
+import { Results } from "~/components/Results";
+import ForYou from "~/components/ForYou";
 
 export const Homepage: React.FC = () => {
 
@@ -12,6 +13,8 @@ export const Homepage: React.FC = () => {
     <div>
       <Hero />
       <GoalsComponent />
+      <ForYou/>
+      <Results />
       <Generation />
       <Articles />
       <InstagramComponent />
