@@ -1,19 +1,22 @@
 import Hero from "~/components/Hero";
 import GoalsComponent from "~/components/Goals";
+import InstagramComponent from "~/components/InstagramComponent";
+import Articles from "~/components/Articles";
+import Generation from "~/components/Generation";
 
 
+export const Homepage: React.FC = () => {
 
 
-
-export const Homepage : React.FC = ()=>{
-
-
-return ( 
-  <div>
-<Hero/>
-<GoalsComponent/>
-  </div>
-)
+  return (
+    <div>
+      <Hero />
+      <GoalsComponent />
+      <Generation />
+      <Articles />
+      <InstagramComponent />
+    </div>
+  )
 
 }
 
@@ -24,7 +27,7 @@ return (
 
 
 
-export default Homepage ;
+export default Homepage;
 
 
 
