@@ -1,19 +1,22 @@
-/**
- * Configure Tailwind v4 in this file using CSS variables and directives:
- * https://tailwindcss.com/docs/v4-beta#css-first-configuration
- */
-
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap');
 @import 'tailwindcss';
 
 @keyframes marquee {
-    0% {
-      transform: translateX(0%);
-    }
-    100% {
-      transform: translateX(-50%);
-    }
+  0% {
+    transform: translateX(0%);
   }
-  
-  :root {
-    --animation-marquee: marquee 7s linear infinite;
+  100% {
+    transform: translateX(-50%);
   }
+}
+
+:root {
+  --animation-marquee: marquee 7s linear infinite;
+  --font-rubik: 'Rubik', sans-serif;
+}
+
+@layer base {
+  body {
+    font-family: var(--font-rubik);
+  }
+}

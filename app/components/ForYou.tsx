@@ -9,7 +9,7 @@ export const ForYou: React.FC = () => {
     <div className="w-full max-w-[1520px] flex flex-col gap-[50px] mt-[70px] mb-[80px] px-4 mx-auto">
       
       <div className="max-w-full flex flex-col gap-[8px] mb-[13px]">
-        <p className="text-[16px] leading-[100%] font-normal mb-[8px]">🧐Why Health & Fitness</p>
+        <p className="text-[16px] leading-[100%] font-normal mb-[9px] ">🧐 Why Health & Fitness</p>
         <h1 className="text-[40px] leading-[100%] font-medium">
           Clean Supplements - Made For You
         </h1>
@@ -24,7 +24,7 @@ export const ForYou: React.FC = () => {
             <h2 className="text-[16px] font-semibold text-black leading-[100%]">
               We Make It Easy
             </h2>
-            <p className="text-[14px] font-normal text-black leading-[100%]">
+            <p className="text-[14px] font-normal text-black leading-[100%] mt-[12px]">
               Personalized Solutions & Guidance Mean You Get Just What You Need. Nothing More.
             </p>
           </div>
@@ -38,7 +38,7 @@ export const ForYou: React.FC = () => {
             <h2 className="text-[16px] font-semibold text-black leading-[100%]">
               Clean & Effective
             </h2>
-            <p className="text-[14px] font-normal text-black leading-[100%]">
+            <p className="text-[14px] font-normal text-black leading-[100%] mt-[12px]">
               Proven Ingredients, not Artificial, Crafted By Experts For Optimal Effectiveness
             </p>
           </div>
@@ -49,10 +49,10 @@ export const ForYou: React.FC = () => {
             <RiChatSmileLine size={20} />
           </div>
           <div className="flex flex-col gap-[8px]">
-            <h2 className="text-[16px] font-semibold text-black leading-[100%]">
+            <h2 className="text-[16px] font-semibold text-black leading-[100%] ">
               Your Free Dietitian
             </h2>
-            <p className="text-[14px] font-normal text-black leading-[100%]">
+            <p className="text-[14px] font-normal text-black leading-[100%] mt-[12px]">
               Every Gainful Subscriber Gets Free, 1:1 Access To Their Own Registered Dietitian.
             </p>
           </div>
@@ -66,7 +66,7 @@ export const ForYou: React.FC = () => {
             <h2 className="text-[16px] font-semibold text-black leading-[100%]">
               Made For You
             </h2>
-            <p className="text-[14px] font-normal text-black leading-[100%]">
+            <p className="text-[14px] font-normal text-black leading-[100%] mt-[12px]">
               Performance is Personal. Personalized & Customizable Products For Your Needs, Body & Goals
             </p>
           </div>

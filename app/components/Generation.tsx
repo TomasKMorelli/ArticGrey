@@ -8,7 +8,7 @@ export const Generation: React.FC = () => {
         <img
           src="assets/hydr.png"
           alt="Background"
-          className="absolute inset-0 w-full h-full object-cover z-0"
+          className="absolute inset-0 w-[1520px] h-full object-cover z-0"
         />
 
       
