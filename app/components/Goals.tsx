@@ -1,35 +1,8 @@
 import React from "react";
 import { ArrowUpRight } from "lucide-react";
+import { goals } from "~/helpers/goals";
 
 export const GoalsComponent: React.FC = () => {
-  const goals = [
-    {
-      img: "mensleeping.png",
-      title: "Sleep",
-      desc: "Optimize your sleep patterns.",
-    },
-    {
-      img: "men22.png",
-      title: "Cognitive Function",
-      desc: "Enhance your brain’s performance and connectivity",
-    },
-    {
-      img: "men3.png",
-      title: "Foundational Health",
-      desc: "Promoting healthy, natural deep sleep day to day",
-    },
-    {
-      img: "men4.png",
-      title: "Athletic Performance",
-      desc: "Increase your healthy tissue, muscle, and energy",
-    },
-    {
-      img: "men5.png",
-      title: "Hormone Support",
-      desc: "Boost your mood, libido, and vitality",
-    },
-  ];
-
   return (
     <div className="w-full flex flex-col items-center mt-[111px] px-4">
       <div className="w-full max-w-[1520px] h-[138px] gap-[8px] text-black items-center flex flex-col justify-center content-center">
@@ -47,17 +20,17 @@ export const GoalsComponent: React.FC = () => {
         </p>
       </div>
 
-      <div className="w-full max-w-[1520px] overflow-x-auto mt-[59px]">
-        <div className="flex flex-row gap-[20px] justify-center items-start w-fit">
+      <div className="w-full max-w-[1520px] mt-[59px]">
+        <div className="flex flex-row gap-[20px] justify-center items-start w-fit overflow-x-auto px-2">
           {goals.map((goal, idx) => (
             <div
               key={idx}
-              className="flex flex-col items-center justify-start w-[288px] group"
+              className="flex flex-col items-center justify-start w-[288px] group overflow-hidden"
             >
               <img
                 src={`/assets/${goal.img}`}
                 alt={`img-${idx}`}
-                className="w-[288px] h-[392px] rounded-[8px] object-cover"
+                className="w-[288px] h-[392px] rounded-[8px] object-cover transition-transform duration-300 group-hover:scale-104"
               />
               <div className="flex flex-col items-start justify-start mt-[12px] px-[8px] w-full">
                 <div className="flex justify-between items-center w-full">
