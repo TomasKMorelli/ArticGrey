@@ -19,3 +19,28 @@ export const getProductHandle = `
   }
 `;
 
+
+export const getAllProductsQuery = `
+  query getAllProduct {
+    products(first: 10) {
+      edges {
+        node {
+          id
+          title
+          description
+          tags
+          featuredImage {
+            url
+            altText
+          }
+          priceRange {
+            minVariantPrice {
+              amount
+              currencyCode
+            }
+          }
+        }
+      }
+    }
+  }
+`;
