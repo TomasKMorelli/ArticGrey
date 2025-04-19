@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Product } from "@shopify/hydrogen/storefront-api-types";
 
 type Props = {
@@ -6,49 +6,49 @@ type Props = {
 };
 
 export const ProductsFirst: React.FC<Props> = ({ product }) => {
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+
   return (
-    <div className="py-12 bg-[#F6F6F5] ">
+    <div className="py-7 w-full-[1400px] bg-[#F6F6F5] mt-[28px] mb-[35px]">
       <div className="text-center mb-10">
         <p className="text-sm">✨ Trending</p>
-
         <div className="flex justify-center items-center mt-1 gap-[30px]">
           <button className="w-8 h-8 border border-black rounded-xs flex items-center justify-center hover:bg-black hover:text-white transition">
             <span className="text-sm">&#8592;</span>
           </button>
-
           <h2 className="text-3xl font-bold">Supplements</h2>
-
           <button className="w-8 h-8 border border-black rounded-xs flex items-center justify-center hover:bg-black hover:text-white transition">
             <span className="text-sm">&#8594;</span>
           </button>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4  gap-6 px-4 md:px-0">
-        {product.map((product) => {
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 px-4 md:px-0">
+        {product.map((product, index) => {
           const tags = product.tags.map((tag) => tag.toLowerCase());
 
           return (
             <div
               key={product.id}
-              className="relative bg-white p-6 rounded-2xl flex flex-col justify-between transition hover:shadow-lg"
+              className="group relative bg-white p-6 rounded-2xl flex flex-col justify-between transition-transform duration-300 ease-in-out hover:shadow-xl"
             >
-        
+              {/* Badge */}
               {tags.includes("bestseller") && (
                 <div className="absolute top-4 right-4 bg-yellow-200 text-xs font-medium text-black px-3 py-1 rounded">
                   Bestseller
                 </div>
               )}
 
-       
-              <div className="w-full flex justify-center items-center min-h-[220px] mb-6">
+              {/* Imagen */}
+              <div className="w-full flex justify-center items-center min-h-[220px] mb-6 overflow-hidden">
                 <img
                   src={product.featuredImage?.url}
                   alt={product.featuredImage?.altText ?? product.title}
-                  className="max-h-[200px] object-contain"
+                  className="max-h-[200px] object-contain transform transition-transform duration-300 ease-in-out group-hover:scale-105"
                 />
               </div>
 
+              {/* Tags */}
               <div className="flex flex-wrap gap-2 mb-4">
                 {product.tags
                   ?.filter(
@@ -67,15 +67,71 @@ export const ProductsFirst: React.FC<Props> = ({ product }) => {
                   ))}
               </div>
 
-
+              {/* Título y descripción */}
               <h3 className="font-semibold text-lg mb-1">{product.title}</h3>
               <p className="text-sm text-gray-500 mb-5">
                 {product.description || "Supports wellness and recovery."}
               </p>
 
-              <div className="flex items-center justify-between mt-auto">
-                <div className="text-black text-sm">★★★★★</div>
-                <button className="bg-black text-white text-sm px-4 py-2 rounded-md hover:bg-gray-800">
+              {/* Botón Add y Dropdown */}
+              <div
+                className="relative"
+                onMouseEnter={() => setHoveredIndex(index)}
+                onMouseLeave={() => setHoveredIndex(null)}
+              >
+                {/* Dropdown (ahora hacia arriba) */}
+                {hoveredIndex === index && (
+                  <div className="absolute z-30 left-0 w-full bottom-full mb-2 bg-white p-6 rounded-2xl shadow-xl">
+                    <div className="grid grid-cols-2 gap-4 mb-4">
+                      <label className="flex flex-col justify-between border rounded-xl p-4 cursor-pointer hover:border-black transition">
+                        <div className="flex items-start gap-2">
+                          <input
+                            type="radio"
+                            name={`purchase-${index}`}
+                            defaultChecked
+                            className="mt-1"
+                          />
+                          <div>
+                            <p className="font-medium text-base leading-tight">
+                              One-Time Purchase
+                            </p>
+                            <p className="font-bold text-lg mt-2">$49.95</p>
+                          </div>
+                        </div>
+                      </label>
+                      <label className="flex flex-col justify-between border rounded-xl p-4 cursor-pointer hover:border-black transition">
+                        <div className="flex items-start gap-2">
+                          <input
+                            type="radio"
+                            name={`purchase-${index}`}
+                            className="mt-1"
+                          />
+                          <div>
+                            <p className="font-medium text-base leading-tight">
+                              Subscribe & Save
+                            </p>
+                            <p className="font-bold text-lg mt-2">
+                              $39.96{" "}
+                              <span className="text-[#A35115] font-semibold">
+                                Save 10%
+                              </span>
+                            </p>
+                          </div>
+                        </div>
+                      </label>
+                    </div>
+
+                    <button className="w-full bg-black text-white font-semibold py-3 rounded-lg hover:bg-gray-900 transition mb-4">
+                      Add to Cart - $49.95
+                    </button>
+                    <p className="text-center underline text-sm text-black cursor-pointer hover:text-gray-800">
+                      View Full Details
+                    </p>
+                  </div>
+                )}
+
+                {/* Botón principal */}
+                <button className="w-full bg-[#1A1A1A] text-white text-sm px-4 py-2 rounded-md font-medium hover:bg-[#2a2a2a] transition">
                   Add • $49.95
                 </button>
               </div>

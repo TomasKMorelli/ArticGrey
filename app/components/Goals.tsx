@@ -4,7 +4,7 @@ import { goals } from "~/helpers/goals";
 
 export const GoalsComponent: React.FC = () => {
   return (
-    <div className="w-full flex flex-col items-center mt-[111px] px-4">
+    <div className="w-full flex flex-col items-center mt-[105px] px-4">
       <div className="w-full max-w-[1520px] h-[138px] gap-[8px] text-black items-center flex flex-col justify-center content-center">
         <h4 className="text-black text-[16px] font-light leading-tight">
           COMFORTABLY UNCOMFORTABLE
@@ -20,12 +20,12 @@ export const GoalsComponent: React.FC = () => {
         </p>
       </div>
 
-      <div className="w-full max-w-[1520px] mt-[59px]">
-        <div className="flex flex-row gap-[20px] justify-center items-start w-fit overflow-x-auto px-2">
+      <div className="w-full max-w-[1920px] mt-[59px]">
+        <div className="flex flex-row gap-[13px] justify-center items-start w-fit overflow-x-auto px-1">
           {goals.map((goal, idx) => (
             <div
               key={idx}
-              className="flex flex-col items-center justify-start w-[288px] group overflow-hidden"
+              className="flex flex-col items-center justify-start w-full-[241px] gap-[20px] group overflow-hidden"
             >
               <img
                 src={`/assets/${goal.img}`}

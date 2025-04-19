@@ -2,7 +2,7 @@ import React from "react";
 
 export const Generation: React.FC = () => {
   return (
-    <div className="relative w-full h-[750px] overflow-hidden mt-[30px] mb-[30px]">
+    <div className="relative w-full-[1700px] h-[750px] overflow-hidden mt-[39px]  mb-[30px]">
       <div className="relative max-w-[1520px] w-full h-full mx-auto px-4 sm:px-8">
         
         <img

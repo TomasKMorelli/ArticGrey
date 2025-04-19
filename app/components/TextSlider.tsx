@@ -12,8 +12,8 @@ const sliderItems = [
 
 export const TextSlider: React.FC = () => {
   return (
-    <div className="relative overflow-hidden bg-black py-4 mt-[72px] h-[50px]">
-      <div className="flex animate-[var(--animation-marquee)] w-[200%]">
+    <div className=" w-full-[1600px] relative overflow-hidden bg-black py-4 mt-[111px] h-[50px]">
+      <div className="flex animate-[var(--animation-marquee)] w-[300%]">
         {[...sliderItems, ...sliderItems].map((item, index) => (
           <div
             key={index}

@@ -7,9 +7,9 @@ type Props = {
 
 export const Products: React.FC<Props> = ({ products }) => {
   return (
-    <div className="px-6 py-10">
+    <div className="px-6 py-10 mb-[75px]">
 
-      <div className="flex flex-col gap-6 mb-10">
+      <div className="flex flex-col gap-6 mb-8">
 
         <div>
           <div className="flex items-center text-sm text-black mb-1">
@@ -107,9 +107,12 @@ export const Products: React.FC<Props> = ({ products }) => {
 
             <div className="flex items-center justify-between mt-auto">
               <div className="text-black text-sm">★★★★★</div>
+
               <button className="bg-black text-white text-xs px-4 py-2 rounded-none hover:bg-gray-800">
                 Add to Cart
               </button>
+
+              
             </div>
           </div>
         ))}

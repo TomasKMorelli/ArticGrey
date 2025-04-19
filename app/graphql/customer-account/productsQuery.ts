@@ -33,6 +33,7 @@ export const getAllProductsQuery = `
             url
             altText
           }
+
           priceRange {
             minVariantPrice {
               amount

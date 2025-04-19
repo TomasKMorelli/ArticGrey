@@ -3,7 +3,7 @@ import { Link } from "@remix-run/react";
 
 const Articles: React.FC = () => {
   return (
-    <div className="w-full max-w-[1530px] mx-auto px-4 py-6 space-y-[40px]">
+    <div className="w-full max-w-[1530px] mx-auto mt-[45px] px-4 py-6 space-y-[40px]">
   
       <div className="flex justify-between items-start">
         <div>
