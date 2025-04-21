@@ -13,8 +13,6 @@ type AsideContextValue = {
   close: () => void;
 };
 
-
-
 export function Aside({
   children,
   heading,
@@ -24,7 +22,7 @@ export function Aside({
   type: AsideType;
   heading: React.ReactNode;
 }) {
-  const {type: activeType, close} = useAside();
+  const { type: activeType, close } = useAside();
   const expanded = type === activeType;
 
   useEffect(() => {
@@ -38,35 +36,48 @@ export function Aside({
             close();
           }
         },
-        {signal: abortController.signal},
+        { signal: abortController.signal },
       );
     }
     return () => abortController.abort();
   }, [close, expanded]);
 
+  if (!expanded) return null;
+
   return (
     <div
       aria-modal
-      className={`overlay ${expanded ? 'expanded' : ''}`}
       role="dialog"
+      className="fixed inset-0 z-50 flex justify-end bg-black/40 pointer-events-none"
     >
-      <button className="close-outside" onClick={close} />
-      <aside>
-        <header>
-          <h3>{heading}</h3>
-          <button className="close reset" onClick={close} aria-label="Close">
+      {/* Contenedor del Aside funcional */}
+      <div className="relative w-[400px] h-full bg-white shadow-lg flex flex-col pointer-events-auto">
+        <header className="flex items-center justify-between p-4 border-b">
+          <h3 className="text-lg font-semibold">{heading}</h3>
+          <button
+            className="text-2xl font-bold"
+            onClick={close}
+            aria-label="Close"
+          >
             &times;
           </button>
         </header>
-        <main>{children}</main>
-      </aside>
+        <main className="flex-1 overflow-y-auto p-4">{children}</main>
+      </div>
+
+      {/* Botón invisible para cerrar haciendo clic fuera del Aside */}
+      <button
+        className="absolute inset-0 w-full h-full"
+        onClick={close}
+        aria-label="Close aside"
+      />
     </div>
   );
 }
 
 const AsideContext = createContext<AsideContextValue | null>(null);
 
-Aside.Provider = function AsideProvider({children}: {children: ReactNode}) {
+Aside.Provider = function AsideProvider({ children }: { children: ReactNode }) {
   const [type, setType] = useState<AsideType>('closed');
 
   return (

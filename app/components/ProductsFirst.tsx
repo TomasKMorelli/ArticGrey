@@ -1,11 +1,16 @@
 import React, { useState } from "react";
 import { Product } from "@shopify/hydrogen/storefront-api-types";
+import { AddToCartButton } from "./AddToCartButton";
+
 
 type Props = {
   product: Product[];
 };
 
 export const ProductsFirst: React.FC<Props> = ({ product }) => {
+
+  
+
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
@@ -25,6 +30,9 @@ export const ProductsFirst: React.FC<Props> = ({ product }) => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 px-4 md:px-0">
         {product.map((product, index) => {
+
+          const variantId = product.variants?.edges?.[0]?.node?.id;
+
           const tags = product.tags.map((tag) => tag.toLowerCase());
 
           return (
@@ -32,14 +40,14 @@ export const ProductsFirst: React.FC<Props> = ({ product }) => {
               key={product.id}
               className="group relative bg-white p-6 rounded-2xl flex flex-col justify-between transition-transform duration-300 ease-in-out hover:shadow-xl"
             >
-              {/* Badge */}
+
               {tags.includes("bestseller") && (
                 <div className="absolute top-4 right-4 bg-yellow-200 text-xs font-medium text-black px-3 py-1 rounded">
                   Bestseller
                 </div>
               )}
 
-              {/* Imagen */}
+
               <div className="w-full flex justify-center items-center min-h-[220px] mb-6 overflow-hidden">
                 <img
                   src={product.featuredImage?.url}
@@ -48,7 +56,7 @@ export const ProductsFirst: React.FC<Props> = ({ product }) => {
                 />
               </div>
 
-              {/* Tags */}
+
               <div className="flex flex-wrap gap-2 mb-4">
                 {product.tags
                   ?.filter(
@@ -57,6 +65,8 @@ export const ProductsFirst: React.FC<Props> = ({ product }) => {
                       tag.toLowerCase() !== "bestseller"
                   )
                   .map((tag) => (
+
+
                     <div
                       key={tag}
                       className="flex items-center bg-[#F0F0F0] text-xs text-black px-3 py-1 rounded-full"
@@ -67,19 +77,19 @@ export const ProductsFirst: React.FC<Props> = ({ product }) => {
                   ))}
               </div>
 
-              {/* Título y descripción */}
+
               <h3 className="font-semibold text-lg mb-1">{product.title}</h3>
               <p className="text-sm text-gray-500 mb-5">
                 {product.description || "Supports wellness and recovery."}
               </p>
 
-              {/* Botón Add y Dropdown */}
+
               <div
                 className="relative"
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
               >
-                {/* Dropdown (ahora hacia arriba) */}
+
                 {hoveredIndex === index && (
                   <div className="absolute z-30 left-0 w-full bottom-full mb-2 bg-white p-6 rounded-2xl shadow-xl">
                     <div className="grid grid-cols-2 gap-4 mb-4">
@@ -120,20 +130,33 @@ export const ProductsFirst: React.FC<Props> = ({ product }) => {
                         </div>
                       </label>
                     </div>
+                    <AddToCartButton
+  lines={[
+    {
+      merchandiseId: variantId,
+      quantity: 1,
+    },
+  ]}
+>
+  <button className="w-[298px] bg-black text-white font-normal py-2 rounded-lg hover:bg-gray-900 transition mb-4 mx-auto flex justify-center items-center">
+    Add to Cart - $49.95
+  </button>
+</AddToCartButton>
 
-                    <button className="w-full bg-black text-white font-semibold py-3 rounded-lg hover:bg-gray-900 transition mb-4">
-                      Add to Cart - $49.95
-                    </button>
+                   
                     <p className="text-center underline text-sm text-black cursor-pointer hover:text-gray-800">
                       View Full Details
                     </p>
                   </div>
                 )}
 
-                {/* Botón principal */}
-                <button className="w-full bg-[#1A1A1A] text-white text-sm px-4 py-2 rounded-md font-medium hover:bg-[#2a2a2a] transition">
-                  Add • $49.95
-                </button>
+
+                <AddToCartButton lines={[{
+                  merchandiseId: variantId,
+                  quantity: 1,
+
+                }]}  >   <button className="w-full bg-[#1A1A1A] text-white text-sm px-4 py-2 rounded-md font-medium hover:bg-[#2a2a2a] transition">Add to Cart - $49.95</button></AddToCartButton>
+
               </div>
             </div>
           );
@@ -144,3 +167,5 @@ export const ProductsFirst: React.FC<Props> = ({ product }) => {
 };
 
 export default ProductsFirst;
+
+

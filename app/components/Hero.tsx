@@ -16,7 +16,8 @@ export const Hero: React.FC = () => {
         aria-hidden="true"
       />
 
-      <div className=" relative z-30 w-[840px] h-[208.35px] flex flex-col items-start px-8 mt-[450px] ml-[8px] gap-[30px]">
+<div className="relative z-30 w-[840px] h-[208.35px] flex flex-col items-start px-8  xl:mt-[450px] ml-[8px] gap-[30px]">
+
         <h1 className=" w-[840px] text-5xl h-[90px] gap-[8px] text-white">
           Great things never came
           <br />

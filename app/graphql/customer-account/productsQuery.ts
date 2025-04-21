@@ -22,26 +22,32 @@ export const getProductHandle = `
 
 export const getAllProductsQuery = `
   query getAllProduct {
-    products(first: 10) {
-      edges {
-        node {
-          id
-          title
-          description
-          tags
-          featuredImage {
-            url
-            altText
+  products(first: 10) {
+    edges {
+      node {
+        id
+        title
+        description
+        tags
+        featuredImage {
+          url
+          altText
+        }
+        priceRange {
+          minVariantPrice {
+            amount
+            currencyCode
           }
-
-          priceRange {
-            minVariantPrice {
-              amount
-              currencyCode
+        }
+        variants(first: 1) {
+          edges {
+            node {
+              id
+              title
             }
           }
         }
       }
     }
   }
-`;
+}`

@@ -9,7 +9,7 @@ export const GoalsComponent: React.FC = () => {
         <h4 className="text-black text-[16px] font-light leading-tight">
           COMFORTABLY UNCOMFORTABLE
         </h4>
-        <h2 className="text-black text-[40px] font-medium leading-tight mb-[23px]">
+        <h2 className="text-black text-[40px] font-medium leading-tight mb-[23px] text-center">
           Start with your Goals
         </h2>
         <p className="font-light text-16 leading-[24px] tracking-normal text-center">
@@ -21,11 +21,11 @@ export const GoalsComponent: React.FC = () => {
       </div>
 
       <div className="w-full max-w-[1920px] mt-[59px]">
-        <div className="flex flex-row gap-[13px] justify-center items-start w-fit overflow-x-auto px-1">
+        <div className="flex gap-[13px] justify-center items-start overflow-x-auto px-1 snap-x snap-mandatory">
           {goals.map((goal, idx) => (
             <div
               key={idx}
-              className="flex flex-col items-center justify-start w-full-[241px] gap-[20px] group overflow-hidden"
+              className="flex flex-col items-center justify-start min-w-[288px] gap-[20px] group overflow-hidden snap-start"
             >
               <img
                 src={`/assets/${goal.img}`}

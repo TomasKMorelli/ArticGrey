@@ -12,15 +12,15 @@ const sliderItems = [
 
 export const TextSlider: React.FC = () => {
   return (
-    <div className=" w-full-[1600px] relative overflow-hidden bg-black py-4 mt-[111px] h-[50px]">
-      <div className="flex animate-[var(--animation-marquee)] w-[300%]">
+    <div className="w-full relative overflow-hidden bg-black py-4  xl:mt-[300px]">
+      <div className="flex w-max animate-[var(--animation-marquee)]">
         {[...sliderItems, ...sliderItems].map((item, index) => (
           <div
             key={index}
-            className="flex flex-row items-center gap-[4px] px-[24px]"
+            className="flex items-center gap-2 px-6 shrink-0"
           >
-            <GiSevenPointedStar className="text-white w-[16px] h-[16px] text-[16px]" />
-            <p className="text-white size-[14px] w-[259px] h-[17px] font-medium leading-[100%]">
+            <GiSevenPointedStar className="text-white w-4 h-4" />
+            <p className="text-white text-sm font-medium leading-none whitespace-nowrap">
               {item}
             </p>
           </div>
