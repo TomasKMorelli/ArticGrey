@@ -9,7 +9,7 @@ type Props = {
 
 export const ProductsFirst: React.FC<Props> = ({ product }) => {
 
-  
+
 
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
@@ -131,19 +131,19 @@ export const ProductsFirst: React.FC<Props> = ({ product }) => {
                       </label>
                     </div>
                     <AddToCartButton
-  lines={[
-    {
-      merchandiseId: variantId,
-      quantity: 1,
-    },
-  ]}
->
-  <button className="w-[298px] bg-black text-white font-normal py-2 rounded-lg hover:bg-gray-900 transition mb-4 mx-auto flex justify-center items-center">
-    Add to Cart - $49.95
-  </button>
-</AddToCartButton>
+                      lines={[
+                        {
+                          merchandiseId: variantId,
+                          quantity: 1,
+                        },
+                      ]}
+                    >
+                      <button className="w-[298px] bg-black text-white font-normal py-2 rounded-lg hover:bg-gray-900 transition mb-4 mx-auto flex justify-center items-center">
+                        Add to Cart - $49.95
+                      </button>
+                    </AddToCartButton>
 
-                   
+
                     <p className="text-center underline text-sm text-black cursor-pointer hover:text-gray-800">
                       View Full Details
                     </p>
