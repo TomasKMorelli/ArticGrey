@@ -21,6 +21,7 @@ import ProductsFirst from "~/components/ProductsFirst";
 
 
 
+
 export async function loader({ context }: LoaderFunctionArgs) {
   const product = await getProduct("magnesium-l-threonate", context.env);
   const productA = await getProduct("magnesium-l-threonate-1"  ,context.env);
@@ -39,17 +40,19 @@ export const Homepage: React.FC = () => {
    }>();
 
   return (
-    <div className="w-full">
+    <div  className="  flex justify-center">
+    <div className="w-full max-w-[2400px]">
       <Hero />
       <GoalsComponent />
       <ProductsFirst product={productC}/>
       <ForYou />
       <Results productsA={productA} />
-      <Generation />
       <Products products={productB}/>
       <ProteidPowerServer product={product}/>
+      <Generation />
       <Articles />
       <InstagramComponent />
+    </div>
     </div>
   );
 };

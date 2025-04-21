@@ -9,7 +9,7 @@ type Props = {
 
 export const Results: React.FC<Props> = ({ productsA }) => {
   return (
-    <div className="w-full min-h-screen mx-auto px-[40px] flex flex-col items-center bg-[#F6F6F5]">
+    <div className="w-full min-h-screen mx-auto mt-[100px] mb-[123px] px-[40px] flex flex-col items-center bg-[#F6F6F5]">
  
       <div className="w-full flex items-center justify-center mt-[40px] mb-[50px] relative">
         <button className="absolute left-0 w-[40px] h-[40px] border border-black flex items-center justify-center">

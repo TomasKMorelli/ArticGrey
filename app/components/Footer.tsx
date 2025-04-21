@@ -21,7 +21,7 @@ export const Footer = ({
     publicStoreDomain,
 }: FooterProps) => {
     return (
-        <footer className="w-full h-auto mt-[920px] bg-[#F6F6F5] font-rubik">
+        <footer className="w-full h-auto mt-[20px] bg-[#F6F6F5] font-rubik">
             <div className="flex flex-wrap lg:flex-nowrap justify-between mt-20 p-7 gap-10">
 
 

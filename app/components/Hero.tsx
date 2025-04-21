@@ -5,7 +5,7 @@ import TextSlider from "./TextSlider";
 
 export const Hero: React.FC = () => {
   return (
-    <>
+    <div className=" w-full-[1600px] h-full-[920px] ">
       <video
         src="/assets/video.mp4"
         autoPlay
@@ -16,7 +16,8 @@ export const Hero: React.FC = () => {
         aria-hidden="true"
       />
 
-      <div className=" relative z-30 w-[840px] h-[268.35px] flex flex-col items-start px-10 mt-[470px] ml-[40px] gap-[50px]">
+<div className="relative z-30 w-[840px] h-[208.35px] flex flex-col items-start px-8  xl:mt-[450px] ml-[8px] gap-[30px]">
+
         <h1 className=" w-[840px] text-5xl h-[90px] gap-[8px] text-white">
           Great things never came
           <br />
@@ -31,12 +32,17 @@ export const Hero: React.FC = () => {
         </button>
 
       </div>
-    
-        <TextSlider />
-        <FeaturedBanner />
-      
 
-    </>
+      <div className="w-full-[1600px]">
+
+      <TextSlider />
+      <FeaturedBanner />
+      </div>
+
+    
+
+
+    </div>
   );
 };
 
