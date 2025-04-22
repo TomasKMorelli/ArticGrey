@@ -1,49 +1,64 @@
-<<<<<<< HEAD
-# ArticGrey
-=======
-# Hydrogen template: Skeleton
+Hello Articgrey team 👋,
 
-Hydrogen is Shopify’s stack for headless commerce. Hydrogen is designed to dovetail with [Remix](https://remix.run/), Shopify’s full stack web framework. This template contains a **minimal setup** of components, queries and tooling to get started with Hydrogen.
+This document outlines the technical process I followed to bring this headless Shopify project to life. From environment setup to deployment, I immersed myself in Shopify’s ecosystem and its Hydrogen framework to build a fast, scalable storefront tailored to your needs.
 
-[Check out Hydrogen docs](https://shopify.dev/custom-storefronts/hydrogen)
-[Get familiar with Remix](https://remix.run/docs/en/v1)
 
-## What's included
+🛠 Technical Workflow
+Step-by-step breakdown of my development workflow:
 
-- Remix
-- Hydrogen
-- Oxygen
-- Vite
-- Shopify CLI
-- ESLint
-- Prettier
-- GraphQL generator
-- TypeScript and JavaScript flavors
-- Minimal setup of components and routes
+Created a Development Store
+Registered a free Shopify Partner account and generated a development store with mock data for testing and integration purposes.
 
-## Getting started
+Installed the Headless Channel
+Installed Shopify’s Headless sales channel via the admin panel to enable Hydrogen integration and access Storefront API credentials.
 
-**Requirements:**
+Initialized GitHub Repository
+Set up a new Git repository and connected it to GitHub for version control and collaboration.
 
-- Node.js version 18.0.0 or higher
+Generated Hydrogen Project
+Used npm create @shopify/hydrogen@latest to scaffold a Hydrogen project with Remix, Tailwind CSS, and TypeScript support.
 
-```bash
-npm create @shopify/hydrogen@latest
-```
+Installed Shopify CLI
+Installed the official Shopify CLI to run local development, preview the app, and manage configurations.
 
-## Building for production
+Configured Environment Variables
+Created a .env file with the necessary API credentials and store domain, enabling secure GraphQL access.
 
-```bash
-npm run build
-```
+Launched the Project Locally
+Installed all dependencies and ran the project using npm install and npm run dev.
 
-## Local development
+Connected to Shopify via GraphQL
+Implemented Shopify Storefront API queries using GraphQL to fetch products, collections, and other storefront data dynamically.
 
-```bash
-npm run dev
-```
+Pushed Code to GitHub
+Committed all changes and pushed the project to the connected GitHub repository for versioning and collaboration.
 
-## Setup for using Customer Account API (`/account` section)
+Deployed on Vercel
+Used Vercel for deploying the Hydrogen project with a custom domain, enabling fast performance and global reach.
 
-Follow step 1 and 2 of <https://shopify.dev/docs/custom-storefronts/building-with-the-customer-account-api/hydrogen#step-1-set-up-a-public-domain-for-local-development>
->>>>>>> 9d66bca (Scaffold Storefront)
+🧰 Technologies Implemented
+Shopify CLI – Project scaffolding, developer commands, environment setup.
+
+Hydrogen + Remix + TypeScript – Headless storefront architecture with modern tooling.
+
+GraphQL – Used to perform structured queries to the Storefront API.
+
+Tailwind CSS – For responsive, utility-first UI styling.
+
+Headless Channel – Essential bridge to connect Hydrogen with Shopify's backend.
+
+Figma + Locofy.ai – Used for fast design-to-code translation and layout prototyping.
+
+🚀 Technical Concepts and Learnings
+Throughout the development process, I dove deep into Shopify’s headless structure and adopted best practices to build a maintainable, component-driven architecture. Some of the key highlights:
+
+Component Reusability – All UI components are modular, reusable, and structured for scalability.
+
+Remix Loaders – Implemented server-side loaders for efficient data fetching and seamless user experience.
+
+Dynamic "Add to Cart" Button – Built a custom, interactive Add to Cart component with conditional logic and purchase option dropdowns.
+
+GraphQL API Handling – Integrated robust queries with proper error handling and loading states.
+
+Responsive Design – Followed mobile-first best practices with pixel-accurate layout matching based on Figma designs.
+

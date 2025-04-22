@@ -11,7 +11,8 @@ export const Header: React.FC = () => {
   const { open } = useAside(); 
 
   return (
-    <nav className="relative z-10 w-full max-w-[1620px] mx-auto mt-[20px] pt-[14px] pb-[20px] px-4 rounded-[8px] flex flex-wrap items-center justify-between bg-white shadow gap-y-4">
+    <nav className="sticky top-0 z-10 w-full max-w-[1620px] mx-auto mt-[20px] pt-[14px] pb-[20px] px-4 rounded-[8px] flex flex-wrap items-center justify-between bg-white shadow gap-y-4">
+
    
       <div className="flex items-center gap-4 min-w-[180px]">
         <Link to="/">

@@ -50,7 +50,7 @@ export function Aside({
       role="dialog"
       className="fixed inset-0 z-50 flex justify-end bg-black/40 pointer-events-none"
     >
-      {/* Contenedor del Aside funcional */}
+    
       <div className="relative w-[400px] h-full bg-white shadow-lg flex flex-col pointer-events-auto">
         <header className="flex items-center justify-between p-4 border-b">
           <h3 className="text-lg font-semibold">{heading}</h3>
@@ -65,7 +65,6 @@ export function Aside({
         <main className="flex-1 overflow-y-auto p-4">{children}</main>
       </div>
 
-      {/* Botón invisible para cerrar haciendo clic fuera del Aside */}
       <button
         className="absolute inset-0 w-full h-full"
         onClick={close}
