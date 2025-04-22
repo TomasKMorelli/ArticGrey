@@ -1,12 +1,25 @@
 import { Product } from "@shopify/hydrogen/storefront-api-types";
-import React from "react";
+import React, { useRef } from "react";
 import { AddToCartButton } from "./AddToCartButton";
 
 type Props = {
-  products: Product[];
+  productB: Product[];
 };
 
-export const Products: React.FC<Props> = ({ products }) => {
+export const Products: React.FC<Props> = ({ productB }) => {
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const scroll = (direction: "left" | "right") => {
+    const container = scrollRef.current;
+    if (container) {
+      const scrollAmount = 350;
+      container.scrollBy({
+        left: direction === "left" ? -scrollAmount : scrollAmount,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
     <div className="px-6 py-10 mb-[75px]">
       <div className="flex flex-col gap-6 mb-8">
@@ -14,6 +27,7 @@ export const Products: React.FC<Props> = ({ products }) => {
           <div className="flex items-center text-sm text-black mb-1">
             <span className="mr-2">📦</span> Goals Specific
           </div>
+
           <div className="flex flex-wrap items-center justify-between">
             <h2 className="text-4xl font-bold text-black mb-2">Bundles</h2>
 
@@ -43,10 +57,16 @@ export const Products: React.FC<Props> = ({ products }) => {
                 View All Bundles
               </button>
               <div className="flex gap-2">
-                <button className="w-8 h-8 flex items-center justify-center border border-gray-300 rounded bg-white text-black">
+                <button
+                  onClick={() => scroll("left")}
+                  className="w-8 h-8 flex items-center justify-center border border-gray-300 rounded bg-white text-black"
+                >
                   ←
                 </button>
-                <button className="w-8 h-8 flex items-center justify-center border border-gray-300 rounded bg-white text-black">
+                <button
+                  onClick={() => scroll("right")}
+                  className="w-8 h-8 flex items-center justify-center border border-gray-300 rounded bg-white text-black"
+                >
                   →
                 </button>
               </div>
@@ -55,19 +75,22 @@ export const Products: React.FC<Props> = ({ products }) => {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {products.map((product) => {
+      <div
+        ref={scrollRef}
+        className="flex gap-6 overflow-x-auto scroll-smooth px-1 hide-scrollbar"
+      >
+        {productB.map((product) => {
           const variantId = product.variants?.edges?.[0]?.node?.id;
 
           return (
             <div
               key={product.id}
-              className="relative bg-[#F6F6F5] p-5 rounded-2xl flex flex-col justify-between"
+              className="min-w-[300px] shrink-0 relative bg-[#F6F6F5] p-5 rounded-2xl flex flex-col justify-between"
             >
-              {(product.tags.includes("Bestseller") ||
-                product.tags.includes("New")) && (
+              {(product.tags?.includes("Bestseller") ||
+                product.tags?.includes("New")) && (
                 <div className="absolute top-3 left-3 bg-[#FFF27A] text-[10px] font-medium text-black px-2 py-0.5 rounded">
-                  {product.tags.includes("Bestseller") ? "Bestseller" : "New"}
+                  {product.tags?.includes("Bestseller") ? "Bestseller" : "New"}
                 </div>
               )}
 
