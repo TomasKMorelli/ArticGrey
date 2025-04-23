@@ -21,6 +21,8 @@ import {
   getProductCollection,
   getVideoCollection,
 } from "~/lib/getProducts";
+import { TextSlider } from "~/components/TextSlider";
+import FeaturedBanner from "~/components/FeaturedBanner";
 
 
 type ExtendedProduct = Product & {
@@ -46,7 +48,7 @@ export async function loader({ context }: LoaderFunctionArgs) {
 }
 
 export const Homepage: React.FC = () => {
-  const { supplements, bestseller, bundles, proteinpower, blogs, collection } =
+  const { supplements, bundles, proteinpower, blogs, collection } =
     useLoaderData<{
       supplements: Product[];
       bestseller: Product[];
@@ -57,14 +59,18 @@ export const Homepage: React.FC = () => {
     }>();
 
   return (
-    <div className="flex justify-center">
-      <div className="w-full max-w-[2400px]">
+    <div className=""  >
+      
+
+  
         <Hero />
+        <TextSlider />
+        <FeaturedBanner />
+
         <GoalsComponent />
         <ProductsFirst product={supplements} />
         <ForYou />
 
-   
         <Suspense fallback={null}>
           <Await resolve={collection}>
             {(data) => <Results collection={data} />}
@@ -78,21 +84,28 @@ export const Homepage: React.FC = () => {
         </Suspense>
 
         <Suspense fallback={null}>
+         
           <Await resolve={proteinpower}>
             {(data) => <ProteidPowerServer productS={data} />}
           </Await>
+      
         </Suspense>
 
         <Generation />
 
         <Suspense fallback={null}>
+        
           <Await resolve={blogs}>
             {(data) => <Articles blogs={data} />}
           </Await>
+      
         </Suspense>
 
-        <InstagramComponent />
-      </div>
+
+<InstagramComponent />
+
+        
+     
     </div>
   );
 };

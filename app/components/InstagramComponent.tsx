@@ -3,7 +3,7 @@ import { photos1, photos2 } from "~/helpers/photos";
 
 export const InstagramComponent: React.FC = () => {
     return (
-        <div className="w-full mx-auto  justify-center content-center py-10 mt-[32px]  items-center flex flex-col gap-3">
+        <div className="w-[1600px]   justify-center content-center py-10 items-center flex flex-col gap-3">
             <div className="flex flex-wrap gap-2">
 
                 <div className="min-w-[240px] w-[500px] h-[285px] bg-[#F6F6F5] flex flex-col items-center justify-center gap-4 p-4">
@@ -21,7 +21,7 @@ export const InstagramComponent: React.FC = () => {
                         <img
                             src={photo.img}
                             alt={`photo1-${idx}`}
-                            className="w-full h-full object-cover rounded-md"
+                            className="w-[1600px] h-full object-cover rounded-md"
                         />
                     </div>
                 ))}

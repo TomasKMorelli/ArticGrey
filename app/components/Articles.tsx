@@ -10,7 +10,7 @@ const Articles: React.FC<Props> = ({ blogs }) => {
   const [firstBlog, ...otherBlogs] = blogs;
 
   return (
-    <div className="w-full max-w-[1530px] mx-auto mt-[45px] px-4 py-6 space-y-[40px]">
+    <div className="w-[1600px] mt-[45px] px-9 py-6 space-y-[40px]">
       <div className="flex justify-between items-start">
         <div>
           <p className="font-normal text-[16px] leading-[100%] mb-1">✍️ Blogs</p>

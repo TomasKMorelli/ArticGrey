@@ -1,12 +1,21 @@
 import React, { useEffect, useRef } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import type { Product } from "@shopify/hydrogen/storefront-api-types";
+import { AddToCartButton } from "./AddToCartButton";
+import { useAside } from "./Aside"; 
 
 type Props = {
-  collection: Product[];
+  collection: Product[] & {
+    metafield?: {
+      value: string;
+      type: string;
+    };
+  }[];
 };
 
 export const Results: React.FC<Props> = ({ collection }) => {
+  const { open } = useAside(); 
+
   const scrollRef = useRef<HTMLDivElement>(null);
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
 
@@ -27,7 +36,7 @@ export const Results: React.FC<Props> = ({ collection }) => {
         entries.forEach((entry) => {
           const video = entry.target as HTMLVideoElement;
           if (entry.isIntersecting) {
-            video.play().catch(() => {});
+            video.play().catch(() => { });
           } else {
             video.pause();
           }
@@ -48,7 +57,7 @@ export const Results: React.FC<Props> = ({ collection }) => {
   }, []);
 
   return (
-    <div className="w-full min-h-screen mx-auto mt-[100px] mb-[123px] px-[40px] flex flex-col items-center bg-[#F6F6F5]">
+    <div className="w-[1600px]  mt-[100px] mb-[123px] px-[40px] flex flex-col items-center bg-[#F6F6F5]">
       <div className="w-full flex items-center justify-center mt-[40px] mb-[50px] relative">
         <button
           onClick={() => scroll("left")}
@@ -85,15 +94,14 @@ export const Results: React.FC<Props> = ({ collection }) => {
         className="w-full overflow-x-auto whitespace-nowrap scrollbar-hide flex gap-[12px] justify-center pb-[40px] scroll-smooth"
       >
         {collection.map((product, ind) => {
-          const videoUrl = product?.metafield?.value || "";
-          console.log('Video URL:', videoUrl);
+          const variantId = product.variants?.edges?.[0]?.node?.id;
+          const videoUrl = product?.metafield?.value;
 
           return (
             <div key={product.id} className="inline-block w-[300px] flex-shrink-0">
               <div className="w-full h-[500px] rounded-[8px] overflow-hidden bg-black">
                 {videoUrl ? (
                   <video
-                    ref={(el) => (videoRefs.current[ind] = el)}
                     src={videoUrl}
                     className="w-full h-full object-cover"
                     loop
@@ -124,7 +132,21 @@ export const Results: React.FC<Props> = ({ collection }) => {
                   </p>
                 </div>
                 <div className="ml-auto flex items-center justify-center w-[28px] h-[28px] border mt-[12px] border-black rounded-full bg-black text-white">
-                  <span className="text-[16px] leading-none">+</span>
+                  <AddToCartButton
+                    lines={[
+                      {
+                        merchandiseId: variantId,
+                        quantity: 1,
+                      },
+                    ]}
+                  >
+                    <button
+                      onClick={() => open("cart")} 
+                      className="text-[16px] leading-none"
+                    >
+                      +
+                    </button>
+                  </AddToCartButton>
                 </div>
               </div>
             </div>

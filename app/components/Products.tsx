@@ -1,12 +1,18 @@
 import { Product } from "@shopify/hydrogen/storefront-api-types";
 import React, { useRef } from "react";
 import { AddToCartButton } from "./AddToCartButton";
+import { useAside } from "./Aside";
+
+
 
 type Props = {
   productB: Product[];
 };
 
 export const Products: React.FC<Props> = ({ productB }) => {
+
+const {open} = useAside()
+
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const scroll = (direction: "left" | "right") => {
@@ -21,7 +27,7 @@ export const Products: React.FC<Props> = ({ productB }) => {
   };
 
   return (
-    <div className="px-6 py-10 mb-[75px]">
+    <div className="w-[1600px] mt-[20px] ">
       <div className="flex flex-col gap-6 mb-8">
         <div>
           <div className="flex items-center text-sm text-black mb-1">
@@ -52,7 +58,7 @@ export const Products: React.FC<Props> = ({ productB }) => {
               ))}
             </div>
 
-            <div className="flex items-center gap-4 mt-4 lg:mt-0">
+            <div className="flex items-center gap-4 ">
               <button className="text-sm text-black underline whitespace-nowrap">
                 View All Bundles
               </button>
@@ -134,7 +140,7 @@ export const Products: React.FC<Props> = ({ productB }) => {
                     },
                   ]}
                 >
-                  <button className="bg-black text-white text-xs px-4 py-2 rounded-none hover:bg-gray-800">
+                  <button  onClick={()=>open("cart")}       className="bg-black text-white text-xs px-4 py-2 rounded-none hover:bg-gray-800">
                     Add to Cart
                   </button>
                 </AddToCartButton>

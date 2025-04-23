@@ -10,6 +10,7 @@ import favicon from '~/assets/favicon.svg';
 import { FOOTER_QUERY, HEADER_QUERY } from '~/lib/fragments';
 import {
 } from '@shopify/hydrogen-react';
+import { CartProvider } from '@shopify/hydrogen-react';
 
 
 export type RootLoader = typeof loader;
@@ -138,15 +139,14 @@ function loadDeferredData({ context }: LoaderFunctionArgs) {
 
 export default function App() {
 
-  
+
 
 
   return (
 
-  
+    <CartProvider>
       <Outlet />
-
-
+    </CartProvider>
 
   )
 }

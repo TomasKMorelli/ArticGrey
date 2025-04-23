@@ -6,7 +6,7 @@ import { RiChatSmileLine } from "react-icons/ri";
 
 export const ForYou: React.FC = () => {
   return (
-    <div className="w-full max-w-[1520px] flex flex-col gap-[50px] mt-[70px] mb-[80px] px-4 mx-auto">
+    <div className="w-full max-w-[1520px] flex flex-col gap-[50px] mt-[70px] mb-[80px] px-4 ">
       
       <div className="max-w-full flex flex-col gap-[8px] mb-[13px]">
         <p className="text-[16px] leading-[100%] font-normal mb-[9px] ">🧐 Why Health & Fitness</p>

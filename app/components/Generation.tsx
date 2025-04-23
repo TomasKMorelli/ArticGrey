@@ -2,8 +2,8 @@ import React from "react";
 
 export const Generation: React.FC = () => {
   return (
-    <div className="relative w-full-[1700px] h-[750px] overflow-hidden mt-[39px]  mb-[30px]">
-      <div className="relative max-w-[1520px] w-full h-full mx-auto px-4 sm:px-8">
+    <div className="w-full-[1600px] h-[750px]  mt-[39px]  mb-[30px]">
+      <div className="relative w-[1600px] h-full ">
         
         <img
           src="assets/hydr.png"
