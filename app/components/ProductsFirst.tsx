@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import { Product } from "@shopify/hydrogen/storefront-api-types";
 import { AddToCartButton } from "./AddToCartButton";
-
+import { useAside } from "./Aside";
 
 
 type Props = {
@@ -10,6 +10,8 @@ type Props = {
 
 export const ProductsFirst: React.FC<Props> = ({ product }) => {
 
+
+const {open} = useAside()
   
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -26,7 +28,7 @@ export const ProductsFirst: React.FC<Props> = ({ product }) => {
   };
 
   return (
-    <div className="py-7 w-full bg-[#F6F6F5] mt-[28px] mb-[35px]">
+    <div className="py-7 w-[1600px] bg-[#F6F6F5] mt-[28px] mb-[35px]">
       <div className="text-center mb-10">
         <p className="text-sm">✨ Trending</p>
         <div className="flex justify-center items-center mt-1 gap-[30px]">
@@ -100,7 +102,7 @@ export const ProductsFirst: React.FC<Props> = ({ product }) => {
                 onMouseLeave={() => setHoveredIndex(null)}
               >
                 {hoveredIndex === index && (
-                  <div className="absolute z-30 left-0 w-full bottom-full mb-2 bg-white p-6 rounded-2xl shadow-xl">
+                  <div className="absolute z-30 left-0 w-[1600px] bottom-full mb-2 bg-white p-6 rounded-2xl shadow-xl">
                     <div className="grid grid-cols-2 gap-4 mb-4">
                       <label className="flex flex-col justify-between border rounded-xl p-4 cursor-pointer hover:border-black transition">
                         <div className="flex items-start gap-2">
@@ -145,9 +147,10 @@ export const ProductsFirst: React.FC<Props> = ({ product }) => {
                           merchandiseId: variantId,
                           quantity: 1,
                         },
+                        
                       ]}
                     >
-                      <button className="w-[298px] bg-black text-white font-normal py-2 rounded-lg hover:bg-gray-900 transition mb-4 mx-auto flex justify-center items-center">
+                      <button  onClick={()=>open("cart")}  className="w-[298px] bg-black text-white font-normal py-2 rounded-lg hover:bg-gray-900 transition mb-4 mx-auto flex justify-center items-center">
                         Add to Cart - $49.95
                       </button>
                     </AddToCartButton>
@@ -166,7 +169,7 @@ export const ProductsFirst: React.FC<Props> = ({ product }) => {
                     },
                   ]}
                 >
-                  <button className="w-full bg-[#1A1A1A] text-white text-sm px-4 py-2 rounded-md font-medium hover:bg-[#2a2a2a] transition">
+                  <button   onClick={()=>open("cart")}  className="w-full bg-[#1A1A1A] text-white text-sm px-4 py-2 rounded-md font-medium hover:bg-[#2a2a2a] transition">
                     Add to Cart - $49.95
                   </button>
                 </AddToCartButton>

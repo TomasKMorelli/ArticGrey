@@ -61,8 +61,11 @@ export function Aside({
           >
             &times;
           </button>
+       
         </header>
-        <main className="flex-1 overflow-y-auto p-4">{children}</main>
+        <main className="flex-1 overflow-y-auto p-4 flex flex-col">
+          {children}
+        </main>
       </div>
 
       <button

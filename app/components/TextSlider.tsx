@@ -12,15 +12,25 @@ const sliderItems = [
 
 export const TextSlider: React.FC = () => {
   return (
-    <div className="w-full relative overflow-hidden bg-black py-4  xl:mt-[300px]">
-      <div className="flex w-max animate-[var(--animation-marquee)]">
+    <div
+    className="
+    w-[1600px]      
+    h-[50px]                                      
+    bg-black
+   
+    flex items-center
+                       
+    sm:mt-[200px] md:mt-[200px] lg:mt-[610px]  
+  "
+    >
+      <div className="flex animate-marquee whitespace-nowrap">
         {[...sliderItems, ...sliderItems].map((item, index) => (
           <div
             key={index}
-            className="flex items-center gap-2 px-6 shrink-0"
+            className="flex items-center gap-2 px-4 md:px-6 shrink-0 min-w-fit"
           >
-            <GiSevenPointedStar className="text-white w-4 h-4" />
-            <p className="text-white text-sm font-medium leading-none whitespace-nowrap">
+            <GiSevenPointedStar className="text-white w-3 h-3 md:w-4 md:h-4 flex-shrink-0" />
+            <p className="text-white text-[10px] sm:text-xs md:text-sm font-medium leading-none whitespace-nowrap">
               {item}
             </p>
           </div>
@@ -29,5 +39,3 @@ export const TextSlider: React.FC = () => {
     </div>
   );
 };
-
-export default TextSlider;

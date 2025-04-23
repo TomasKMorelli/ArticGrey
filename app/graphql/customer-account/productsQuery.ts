@@ -60,7 +60,7 @@ export const COLLECTION_VIDEO_QUERY = `
                 }
               }
             }
-            metafield(namespace: "custom", key: "video") {
+            metafield(namespace: "custom", key: "videos") {
               value
               type
             }
@@ -70,7 +70,6 @@ export const COLLECTION_VIDEO_QUERY = `
     }
   }
 `;
-
 
 
 export const BLOGS_QUERY = `

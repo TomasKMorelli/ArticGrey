@@ -22,7 +22,7 @@ export const ProteidPowerServer: React.FC<Props> = ({ productS }) => {
   };
 
   return (
-    <div className="relative w-full bg-[#f6f5f3] px-4 py-[100px] flex flex-col items-center">
+    <div className="relative max-w-[1600px] bg-[#f6f5f3] px-4 py-[100px] flex flex-col items-center">
    
       <div className="text-center mb-12">
         <p className="text-sm text-gray-700 mb-1">Simple & Effective Ingredients</p>
@@ -49,7 +49,7 @@ export const ProteidPowerServer: React.FC<Props> = ({ productS }) => {
                 <img
                   src={product.featuredImage?.url}
                   alt={product.title}
-                  className="w-full max-w-[320px] h-auto object-contain"
+                  className=" max-w-[320px] h-auto object-contain"
                 />
               </div>
 
