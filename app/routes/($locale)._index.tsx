@@ -59,55 +59,75 @@ export const Homepage: React.FC = () => {
     }>();
 
   return (
-    <div className=""  >
-      
+    <div>
 
-  
-        <Hero />
-        <TextSlider />
-        <FeaturedBanner />
 
-        <GoalsComponent />
-        <ProductsFirst product={supplements} />
-        <ForYou />
+      <Hero />
+      <TextSlider />
+      <FeaturedBanner />
+      <GoalsComponent />
+      <ProductsFirst product={supplements} />
+      <ForYou />
 
-        <Suspense fallback={null}>
-          <Await resolve={collection}>
-            {(data) => <Results collection={data} />}
-          </Await>
-        </Suspense>
+      <Suspense fallback={null}>
+        <Await resolve={collection}>
+          {(data) => <Results collection={data} />}
+        </Await>
+      </Suspense>
 
-        <Suspense fallback={null}>
-          <Await resolve={bundles}>
-            {(data) => <Products productB={data} />}
-          </Await>
-        </Suspense>
+      <Suspense fallback={null}>
+        <Await resolve={bundles}>
+          {(data) => <Products productB={data} />}
+        </Await>
+      </Suspense>
 
-        <Suspense fallback={null}>
-         
-          <Await resolve={proteinpower}>
-            {(data) => <ProteidPowerServer productS={data} />}
-          </Await>
-      
-        </Suspense>
 
+      <Suspense fallback={null}>
+
+        <Await resolve={proteinpower}>
+          {(data) => <ProteidPowerServer productS={data} />}
+        </Await>
+
+      </Suspense>
+
+
+
+      <Suspense fallback={null}>
         <Generation />
+        <Await resolve={blogs}>
+          {(data) => <Articles blogs={data} />}
+        </Await>
+      </Suspense> 
 
-        <Suspense fallback={null}>
-        
-          <Await resolve={blogs}>
-            {(data) => <Articles blogs={data} />}
-          </Await>
-      
-        </Suspense>
-
-
-<InstagramComponent />
-
-        
-     
+      <InstagramComponent /> 
     </div>
+
+
+
+
+
+
+
+
+
   );
 };
 
 export default Homepage;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

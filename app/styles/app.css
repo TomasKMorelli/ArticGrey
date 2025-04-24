@@ -541,6 +541,3 @@ button.reset:hover:not(:has(> *)) {
 
 
 
-body {
-  overflow-x: hidden;
-}
