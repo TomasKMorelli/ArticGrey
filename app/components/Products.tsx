@@ -21,7 +21,7 @@ export const Products: React.FC<Props> = ({ productB }) => {
   };
 
   return (
-    <div className="w-full flex flex-col items-center mt-[50px]">
+    <div className="w-full flex flex-col items-center mt-[50px] mb-[80px]">
       <div className="max-w-[1520px] w-full px-4">
         <div className="flex items-center text-sm text-black mb-1">
           <span className="mr-2">📦</span> Goals Specific
@@ -141,7 +141,26 @@ export const Products: React.FC<Props> = ({ productB }) => {
               return (
                 <div
                   key={product.id}
-                  className="w-[355px] shrink-0 h-[475px] scroll-snap-align-start bg-[#F6F6F5] p-5 rounded-2xl flex flex-col justify-between relative"
+                  className="
+                  w-full
+                  max-w-[90%]
+                  sm:max-w-[50%]
+                  md:max-w-[33.3333%]
+                  lg:max-w-[23%]
+                  xl:max-w-[23.5%]
+                  2xl:max-w-[23.8%]
+                  h-[520px]
+                  shrink-0
+                  snap-start
+                  bg-white
+                  p-8
+                  rounded-2xl
+                  flex flex-col justify-between
+                  transition-transform
+                  hover:shadow-xl
+                  relative
+                  group
+                "
                 >
                   {(product.tags?.includes("Bestseller") ||
                     product.tags?.includes("New")) && (

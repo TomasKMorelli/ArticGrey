@@ -54,7 +54,26 @@ export const ProductsFirst: React.FC<Props> = ({ product }) => {
           return (
             <div
               key={product.id}
-              className="w-[300px] sm:w-[340px] md:w-[365px] h-[520px] shrink-0 snap-start bg-white p-8 rounded-2xl flex flex-col justify-between transition-transform hover:shadow-xl relative group"
+              className="
+              w-full
+              max-w-[90%]
+              sm:max-w-[50%]
+              md:max-w-[33.3333%]
+              lg:max-w-[23%]
+              xl:max-w-[23.5%]
+              2xl:max-w-[23.8%]
+              h-[520px]
+              shrink-0
+              snap-start
+              bg-white
+              p-8
+              rounded-2xl
+              flex flex-col justify-between
+              transition-transform
+              hover:shadow-xl
+              relative
+              group
+            "
             >
               {tags.includes("bestseller") && (
                 <div className="absolute top-4 right-4 bg-yellow-200 text-xs font-medium text-black px-3 py-1 rounded">
