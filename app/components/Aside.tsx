@@ -48,7 +48,7 @@ export function Aside({
     <div
       aria-modal
       role="dialog"
-      className="fixed inset-0 z-50 flex justify-end bg-black/40 pointer-events-none"
+      className="fixed inset-0 z-150 flex justify-end bg-black/40 pointer-events-none"
     >
     
       <div className="relative w-[400px] h-full bg-white shadow-lg flex flex-col pointer-events-auto">

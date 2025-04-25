@@ -538,3 +538,7 @@ button.reset:hover:not(:has(> *)) {
 .animate-marquee {
   animation: marquee 2s linear infinite;
 }
+
+body {
+  overflow-x: hidden;
+}
