@@ -22,7 +22,7 @@ export const Footer = ({
 }: FooterProps) => {
   return (
     <footer className="w-full bg-[#F6F6F5] font-rubik">
-      <div className="flex flex-wrap lg:flex-nowrap justify-between px-6 py-10 gap-10 max-w-[1520px] mx-auto">
+      <div className="flex flex-wrap lg:flex-nowrap justify-between px-10 py-6 gap-10 max-w-[1820px] mx-auto">
      
         <div className="w-full lg:w-[368px] flex flex-col">
           <h2 className="text-xl font-semibold mb-3">Be a Part of Our Journey</h2>
@@ -42,7 +42,8 @@ export const Footer = ({
         </div>
 
       
-        <div className="flex flex-wrap justify-between w-full lg:w-[772px] gap-y-8">
+       <div className="flex  justify-around w-full lg:w-[792px] gap-y-8 ">
+
           {[
             {
               title: 'About Us',

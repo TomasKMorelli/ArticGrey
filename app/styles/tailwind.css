@@ -20,3 +20,8 @@
     font-family: var(--font-rubik);
   }
 }
+
+
+body {
+  overflow-x: hidden;
+}

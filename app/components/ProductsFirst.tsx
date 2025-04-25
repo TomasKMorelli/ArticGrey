@@ -23,7 +23,7 @@ export const ProductsFirst: React.FC<Props> = ({ product }) => {
   };
 
   return (
-    <section className="py-20 bg-[#F6F6F5] mt-[60px] px-4 sm:px-8">
+    <section className="py-15 bg-[#F6F6F5] mt-[60px] px-4 sm:px-8">
       <div className="text-center mb-14">
         <p className="text-sm">✨ Trending</p>
         <div className="flex justify-center items-center mt-1 gap-6">
@@ -49,12 +49,31 @@ export const ProductsFirst: React.FC<Props> = ({ product }) => {
       >
         {product.map((product) => {
           const variantId = product.variants?.edges?.[0]?.node?.id;
-          const tags = product.tags?.map((tag) => tag.toLowerCase()) ;
+          const tags = product.tags?.map((tag) => tag.toLowerCase());
 
           return (
             <div
               key={product.id}
-              className="w-[300px] sm:w-[340px] md:w-[365px] h-[520px] shrink-0 snap-start bg-white p-8 rounded-2xl flex flex-col justify-between transition-transform hover:shadow-xl relative group"
+              className="
+              w-full
+              max-w-[90%]
+              sm:max-w-[50%]
+              md:max-w-[33.3333%]
+              lg:max-w-[23%]
+              xl:max-w-[23.5%]
+              2xl:max-w-[23.8%]
+              h-[520px]
+              shrink-0
+              snap-start
+              bg-white
+              p-8
+              rounded-2xl
+              flex flex-col justify-between
+              transition-transform
+              hover:shadow-xl
+              relative
+              group
+            "
             >
               {tags.includes("bestseller") && (
                 <div className="absolute top-4 right-4 bg-yellow-200 text-xs font-medium text-black px-3 py-1 rounded">
@@ -104,16 +123,16 @@ export const ProductsFirst: React.FC<Props> = ({ product }) => {
                   <AddToCartButton
                     lines={[{ merchandiseId: variantId, quantity: 1 }]}
                   >
-                    <button
-                      onClick={() => open("cart")}
-                      className="bg-[#1A1A1A] text-white text-sm px-4 py-2 rounded-md font-medium hover:bg-[#2a2a2a] transition"
-                    >
+    <button
+    onClick={() => open("cart")}
+    className="bg-[#1A1A1A] text-white text-xs px-3 py-1.5 rounded-md font-medium hover:bg-[#2a2a2a] transition"
+  >
                       Add • $49.00
                     </button>
                   </AddToCartButton>
                 </div>
 
-       
+
                 <div className="absolute z-30 left-0 w-full bottom-full mb-2 bg-white p-6 rounded-2xl shadow-xl opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-300">
                   <div className="flex flex-col gap-4 mb-5">
                     {[

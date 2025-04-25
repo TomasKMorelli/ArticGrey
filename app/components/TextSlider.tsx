@@ -14,7 +14,7 @@ export const TextSlider: React.FC = () => {
   return (
     <div
     className="
-    w-full   
+    w-full 
     h-[50px]                                      
     bg-black
     flex items-center" >
