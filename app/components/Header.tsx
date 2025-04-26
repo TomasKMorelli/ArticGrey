@@ -12,77 +12,60 @@ import { useState } from 'react';
 
 export const Header: React.FC = () => {
   const { open } = useAside();
-  const [isOpen, setIsOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 px-4  mt-[20px] sm:px-6 md:px-10 bg-transparent">
-      <div className="max-w-[1600px] mx-auto flex justify-between items-center h-[70px] rounded-[8px] pt-[20px] px-[24px] pb-[20px] bg-white">
-        <Link to="/">
-          <span className="text-[20px] leading-[100%] font-bold font-Rubik uppercase text-black">
-            UNCMFRT.COM
-          </span>
-        </Link>
-
+    <nav className="xl:w-[1320px] 2xl:w-[1520px]  h-[70px] mt-5 mx-auto flex items-center justify-between rounded-lg px-6 py-5 bg-white shadow-md relative z-50">
+      <div className="flex items-center gap-6">
         <button
           className="lg:hidden"
-          onClick={() => setIsOpen(!isOpen)}
-          aria-label="Toggle Menu"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
-          {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
-
-        <ul className="hidden lg:flex items-center gap-[40px] text-base font-Rubik text-black">
-          <Search className="w-5 h-5 cursor-pointer" />
-          <Link to="/notFound" className="cursor-pointer">Shop</Link>
-          <Link to="/notFound" className="cursor-pointer">Science</Link>
-          <Link to="/notFound" className="cursor-pointer">Podcasts</Link>
-          <Link to="/notFound" className="cursor-pointer">Trainers</Link>
-          <Link to="/notFound" className="cursor-pointer">Blog</Link>
-        </ul>
-
-        <div className="hidden lg:flex items-center gap-[30px]">
-          <button className="flex items-center h-[45px] px-[16px] pr-[6px] gap-[10px] rounded-[8px] bg-gray-100 text-base text-black">
-            Men <CircleUserRound className="w-4 h-4" />
+        <h1 className="text-xl font-bold uppercase">uncmfrt.com</h1>
+      </div>
+      <ul className="hidden lg:flex gap-8 text-sm absolute left-1/2 transform -translate-x-1/2">
+        <li className="hover:underline cursor-pointer">Shop</li>
+        <li className="hover:underline cursor-pointer">Science</li>
+        <li className="hover:underline cursor-pointer">Podcasts</li>
+        <li className="hover:underline cursor-pointer">Trainers</li>
+        <li className="hover:underline cursor-pointer">Blog</li>
+      </ul>
+      <div className="flex items-center gap-4">
+        <div className="hidden lg:flex items-center gap-2">
+          <button className="flex items-center gap-1 px-4 py-2 rounded-full border">
+            Men
           </button>
-          <button className="h-[45px] px-[24px] rounded-[8px] bg-black text-white text-base font-medium">
+          <button className="px-4 py-2 rounded-full bg-black text-white">
             Take The Quiz
           </button>
-          <User className="w-5 h-5 cursor-pointer" />
-          <ShoppingBag
-            className="w-5 h-5 cursor-pointer"
-            onClick={() => open('cart')}
-          />
         </div>
+        <User size={20} className="cursor-pointer" />
+        <button onClick={()=> open("cart")}>
+        <ShoppingBag size={20} className="cursor-pointer" />
+        </button>
       </div>
-
-      {isOpen && (
-        <div className="lg:hidden mt-2 px-[24px] flex flex-col gap-4 bg-black text-white py-4 rounded-b-[8px] shadow-lg">
-          <ul className="flex flex-col gap-4 text-base font-Rubik">
-            <Link to="/notFound" className="cursor-pointer">Shop</Link>
-            <Link to="/notFound" className="cursor-pointer">Science</Link>
-            <Link to="/notFound" className="cursor-pointer">Podcasts</Link>
-            <Link to="/notFound" className="cursor-pointer">Trainers</Link>
-            <Link to="/notFound" className="cursor-pointer">Blog</Link>
+      {isMenuOpen && (
+        <div className="absolute top-20 left-0 w-full bg-white shadow-md rounded-lg p-4 flex flex-col gap-4 lg:hidden z-50">
+          <ul className="flex flex-col gap-4 text-sm">
+            <li className="hover:underline cursor-pointer">Shop</li>
+            <li className="hover:underline cursor-pointer">Science</li>
+            <li className="hover:underline cursor-pointer">Podcasts</li>
+            <li className="hover:underline cursor-pointer">Trainers</li>
+            <li className="hover:underline cursor-pointer">Blog</li>
           </ul>
-          <div className="flex flex-col gap-3">
-            <button className="flex items-center h-[45px] px-[16px] pr-[6px] gap-[10px] rounded-[8px] bg-gray-100 text-base text-black">
-              Men <CircleUserRound className="w-4 h-4" />
+          <div className="flex flex-col gap-2 mt-4">
+            <button className="flex items-center justify-center gap-1 px-4 py-2 rounded-full border">
+              Men
             </button>
-            <button className="h-[45px] px-[24px] rounded-[8px] bg-white text-black text-base font-medium">
+            <button className="px-4 py-2 rounded-full bg-black text-white">
               Take The Quiz
             </button>
-            <div className="flex gap-4">
-              <User className="w-5 h-5 cursor-pointer" />
-              <ShoppingBag
-                className="w-5 h-5 cursor-pointer"
-                onClick={() => open('cart')}
-              />
-            </div>
           </div>
         </div>
       )}
     </nav>
   );
-};
-
+}
 export default Header;

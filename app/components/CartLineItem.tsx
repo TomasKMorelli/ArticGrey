@@ -74,13 +74,15 @@ export function CartLineItem({
  * hasn't yet responded that it was successfully added to the cart.
  */
 function CartLineQuantity({line}: {line: CartLine}) {
+
+  
   if (!line || typeof line?.quantity === 'undefined') return null;
   const {id: lineId, quantity, isOptimistic} = line;
   const prevQuantity = Number(Math.max(0, quantity - 1).toFixed(0));
   const nextQuantity = Number((quantity + 1).toFixed(0));
 
   return (
-    <div className="cart-line-quantity">
+    <div className="cart-line-quantity ">
       <small>Quantity: {quantity} &nbsp;&nbsp;</small>
       <CartLineUpdateButton lines={[{id: lineId, quantity: prevQuantity}]}>
         <button
