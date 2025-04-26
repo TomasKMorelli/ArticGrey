@@ -2,7 +2,7 @@ import React from "react";
 
 export const Hero: React.FC = () => {
   return (
-    <div className="relative w-full h-[920px] overflow-hidden">
+    <div className="w-full h-[902px] overflow-hidden">
       <video
         src="/assets/video.mp4"
         autoPlay
