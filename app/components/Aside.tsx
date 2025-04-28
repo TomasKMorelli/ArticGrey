@@ -54,26 +54,15 @@ export function Aside({
     
 <div className="relative  sm:w-full xl:w-[540px] 2xl:w-[540px]  bg-white shadow-lg flex flex-col pointer-events-auto">
 
-<header className="flex items-center justify-between p-4 border-b">
-    <h3 className="text-base sm:text-xl font-semibold text-black truncate">
-      {heading}
-    </h3>
-    <button
-      onClick={close}
-      aria-label="Close"
-      className="text-xl sm:text-2xl font-bold text-black hover:text-gray-600 leading-none"
-    >
-      &times;
-    </button>
-  </header>
 
-  {/* Main content */}
+
+
   <main className="flex-1 overflow-y-auto p-4 flex flex-col">
     {children}
   </main>
 </div>
 
-{/* Botón gigante invisible para cerrar */}
+
 <button
   className="absolute inset-0 w-20 h-full"
   onClick={close}

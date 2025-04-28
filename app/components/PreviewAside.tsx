@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useAside } from '~/components/Aside';
 
-
 export const PreviewAside: React.FC = () => {
   const { data, close } = useAside();
   const [purchaseType, setPurchaseType] = useState<'one-time' | 'subscription'>('one-time');
@@ -14,13 +13,22 @@ export const PreviewAside: React.FC = () => {
   const totalPrice = (pricePerUnit * quantity).toFixed(2);
 
   return (
-    <div className="  sm:gap-5  sm:w-125 sm:mt-3 2xl:w-130 xl:w-126     flex flex-col h-full overflow-hidden px-4 py-3  xl:gap-2 2xl:gap-3">
+<div className="relative w-full h-full max-w-full flex flex-col overflow-hidden px-4 py-3 sm:gap-5 sm:w-125 xl:w-126 2xl:w-130 xl:gap-4 2xl:gap-4">
+      
+      <button
+        onClick={close}
+        className="absolute top-2 right-2 text-black hover:text-gray-700 text-2xl font-bold"
+        aria-label="Close"
+      >
+        ×
+      </button>
+
       {data.image && (
         <div className="flex justify-center">
           <img
             src={data.image}
             alt={data.title}
-            className="     sm:h-[200px] 2xl:h-[300px]  xl:h-[196px] "
+            className="sm:h-[300px] xl:h-[196px] 2xl:h-[300px]"
           />
         </div>
       )}
@@ -54,8 +62,8 @@ export const PreviewAside: React.FC = () => {
         </div>
       )}
 
-      <div className=" flex flex-col gap-2 bg-gray-100 p-4 rounded-lg">
-        <div className="grid grid-cols-5  text-gray-500 font-semibold text-xs mb-2">
+      <div className="flex flex-col gap-2 bg-gray-100 p-4 rounded-lg">
+        <div className="grid grid-cols-5 text-gray-500 font-semibold text-xs mb-2">
           <p>Variant</p>
           <p className="text-center">Quantity</p>
           <p className="text-center">Price</p>
@@ -63,7 +71,7 @@ export const PreviewAside: React.FC = () => {
           <p className="text-center">Total</p>
         </div>
 
-        <div className="  grid grid-cols-5 items-center text-sm py-3 border-t">
+        <div className="grid grid-cols-5 items-center text-sm py-3 border-t">
           <div className="flex items-center gap-3">
             <img
               src={data.image}
@@ -76,7 +84,7 @@ export const PreviewAside: React.FC = () => {
             </div>
           </div>
 
-          <div className="    flex items-center justify-center gap-2">
+          <div className="flex items-center justify-center gap-2">
             <button
               onClick={() => setQuantity(Math.max(1, quantity - 1))}
               className="w-3 h-7 flex items-center justify-center border border-gray-400 rounded-md text-lg font-bold hover:bg-gray-200 transition"
@@ -99,7 +107,7 @@ export const PreviewAside: React.FC = () => {
         </div>
       </div>
 
-      <div className="  flex flex-col sm:flex-row gap-4 bg-gray-100 p-4 rounded-lg">
+      <div className="flex flex-col sm:flex-row gap-4 bg-gray-100 p-4 rounded-lg">
         <label className={`flex-1 cursor-pointer border rounded-lg p-4 ${purchaseType === 'one-time' ? 'border-black' : 'border-transparent'}`}>
           <input
             type="radio"
@@ -137,7 +145,7 @@ export const PreviewAside: React.FC = () => {
       </div>
 
       <button
-        className=" border border-black bg-black text-white py-4 text-lg font-semibold rounded focus:outline-none focus:ring-2 focus:ring-blue-600 transition flex justify-between items-center px-6 mt-2"
+        className="border border-black bg-black text-white py-4 text-lg font-semibold rounded focus:outline-none focus:ring-2 focus:ring-blue-600 transition flex justify-between items-center px-6 mt-2"
         onClick={() => {
           console.log('Add to Cart - Type:', purchaseType, 'Quantity:', quantity);
         }}
@@ -146,7 +154,7 @@ export const PreviewAside: React.FC = () => {
         <span>${totalPrice}</span>
       </button>
 
-      <p className=" text-center text-sm text-black underline hover:text-gray-700 mt-4 cursor-pointer">
+      <p className="text-center text-sm text-black underline hover:text-gray-700 mt-4 cursor-pointer">
         View Full Details
       </p>
     </div>
