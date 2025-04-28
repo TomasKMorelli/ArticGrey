@@ -9,7 +9,7 @@ export const Hero: React.FC = () => {
         muted
         loop
         playsInline
-        className="absolute top-0 left-0 w-full h-full object-cover"
+        className="absolute top-0 left-0 w-full h-[993px] object-cover"
         aria-hidden="true"
       />
 

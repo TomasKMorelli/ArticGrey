@@ -13,6 +13,7 @@ import {
 import { CartProvider } from '@shopify/hydrogen-react';
 
 
+
 export type RootLoader = typeof loader;
 
 /**
@@ -146,6 +147,7 @@ export default function App() {
 
     <CartProvider>
       <Outlet />
+     
     </CartProvider>
 
   )

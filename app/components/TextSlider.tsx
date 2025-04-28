@@ -26,7 +26,7 @@ export const TextSlider: React.FC = () => {
         {[...sliderItems, ...sliderItems].map((item, index) => (
           <div
             key={index}
-            className="flex items-center gap-2 px-4 md:px-6 shrink-0 min-w-fit"
+            className="flex items-center gap-2 px-4 md:px-4 shrink-0 min-w-fit"
           >
             <GiSevenPointedStar className="text-white w-3 h-3 md:w-4 md:h-4 flex-shrink-0" />
             <p className="text-white text-[10px] sm:text-xs md:text-sm font-medium ">

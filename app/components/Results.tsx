@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import type { Product } from "@shopify/hydrogen/storefront-api-types";
-import { AddToCartButton } from "./AddToCartButton";
 import { useAside } from "./Aside";
 
 type Props = {
@@ -30,7 +29,7 @@ export const Results: React.FC<Props> = ({ collection }) => {
       (entries) =>
         entries.forEach((entry) => {
           const video = entry.target as HTMLVideoElement;
-          if (entry.isIntersecting) video.play().catch(() => {});
+          if (entry.isIntersecting) video.play().catch(() => { });
           else video.pause();
         }),
       { threshold: 0.6 }
@@ -49,7 +48,7 @@ export const Results: React.FC<Props> = ({ collection }) => {
 
   return (
     <section className="w-full bg-[#F6F6F5] h-[900px] px-4 sm:px-6 mt-6  flex flex-col items-center">
-    
+
       <div className="hidden sm:flex items-center justify-center gap-4 w-full mt-10 mb-10">
         <button
           onClick={() => scroll("left")}
@@ -102,7 +101,7 @@ export const Results: React.FC<Props> = ({ collection }) => {
         </div>
       </div>
 
-  
+
       <div
         ref={scrollRef}
         className="w-full overflow-x-auto flex gap-5 sm:gap-8 scroll-smooth whitespace-nowrap scrollbar-hide"
@@ -150,13 +149,19 @@ export const Results: React.FC<Props> = ({ collection }) => {
                   </p>
                 </div>
                 <div className="ml-auto mt-2 w-7 h-7 bg-black text-white rounded-full flex items-center justify-center border border-black">
-                  <AddToCartButton
-                    lines={[{ merchandiseId: variantId, quantity: 1 }]}
-                  >
-                    <button onClick={() => open("cart")} className="text-base">
-                      +
-                    </button>
-                  </AddToCartButton>
+
+                  <button onClick={() =>
+                    open('preview', {
+                      title: product.title,
+                      image: product.featuredImage?.url || '',
+                      description: product.tags?.join(', '),
+                      price: product.priceRange?.minVariantPrice?.amount || '0',
+                      merchandiseId: product.variants?.edges?.[0]?.node?.id || '',
+                    })
+                  } className="text-base">
+                    +
+                  </button>
+
                 </div>
               </div>
             </div>

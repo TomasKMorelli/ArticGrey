@@ -6,10 +6,11 @@ import {
   useState,
 } from 'react';
 
-type AsideType = 'search' | 'cart' | 'mobile' | 'closed' ;
+type AsideType = 'search' | 'cart' | 'mobile' | 'closed' | 'preview' ;
 type AsideContextValue = {
   type: AsideType;
-  open: (mode: AsideType) => void;
+  data? : any
+  open: (mode: AsideType , data? : any) => void;
   close: () => void;
 };
 
@@ -51,7 +52,8 @@ export function Aside({
       className="fixed inset-0 z-150 flex justify-end bg-black/40 pointer-events-none"
     >
     
-      <div className="relative w-[400px] h-full bg-white shadow-lg flex flex-col pointer-events-auto">
+    <div className="relative w-full sm:w-full xl:w-[540px] 2xl:w-[540px] h-[1105px] bg-white shadow-lg flex flex-col pointer-events-auto">
+
         <header className="flex items-center justify-between p-4 border-b">
           <h3 className="text-lg font-semibold">{heading}</h3>
           <button
@@ -81,13 +83,20 @@ const AsideContext = createContext<AsideContextValue | null>(null);
 
 Aside.Provider = function AsideProvider({ children }: { children: ReactNode }) {
   const [type, setType] = useState<AsideType>('closed');
-
+  const [data, setData] = useState<any>(null);
   return (
     <AsideContext.Provider
       value={{
         type,
-        open: setType,
-        close: () => setType('closed'),
+        data ,
+        open: (newType, newData) => {
+          setType(newType);
+          setData(newData ?? null);
+        },
+        close: () => {
+          setType('closed');
+          setData(null); 
+        },
       }}
     >
       {children}

@@ -1,6 +1,5 @@
 import { Product } from "@shopify/hydrogen/storefront-api-types";
 import React, { useRef } from "react";
-import { AddToCartButton } from "./AddToCartButton";
 import { useAside } from "./Aside";
 
 type Props = {
@@ -203,21 +202,22 @@ export const Products: React.FC<Props> = ({ productB }) => {
                   <div className="flex items-center justify-between mt-auto">
                     <div className="text-black text-sm">★★★★★</div>
 
-                    <AddToCartButton
-                      lines={[
-                        {
-                          merchandiseId: variantId,
-                          quantity: 1,
-                        },
-                      ]}
-                    >
+      
                       <button
-                        onClick={() => open("cart")}
+                           onClick={() =>
+                            open('preview', {
+                              title: product.title,
+                              image: product.featuredImage?.url || '',
+                              description: product.tags?.join(', ') ,
+                              price: product.priceRange?.minVariantPrice?.amount || '0',
+                              merchandiseId: product.variants?.edges?.[0]?.node?.id || '',
+                            })
+                          }
                         className="bg-black text-white text-xs px-4 py-2 rounded-none hover:bg-gray-800 transition"
                       >
                         Add to Cart
                       </button>
-                    </AddToCartButton>
+                
                   </div>
                 </div>
               );
