@@ -23,6 +23,7 @@ import {
 } from "~/lib/getProducts";
 import { TextSlider } from "~/components/TextSlider";
 import FeaturedBanner from "~/components/FeaturedBanner";
+import AsideModals from "~/components/AsidesModals";
 
 
 type ExtendedProduct = Product & {
@@ -100,6 +101,8 @@ export const Homepage: React.FC = () => {
       </Suspense> 
 
       <InstagramComponent /> 
+
+      <AsideModals/>
     </div>
 
 

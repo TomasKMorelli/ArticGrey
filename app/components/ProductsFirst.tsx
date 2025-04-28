@@ -1,6 +1,5 @@
 import React, { useRef } from "react";
 import { Product } from "@shopify/hydrogen/storefront-api-types";
-import { AddToCartButton } from "./AddToCartButton";
 import { useAside } from "./Aside";
 import { FaStar } from "react-icons/fa";
 
@@ -48,7 +47,7 @@ export const ProductsFirst: React.FC<Props> = ({ product }) => {
         className="flex gap-10 overflow-x-auto scroll-smooth snap-x snap-mandatory px-1 sm:px-6 hide-scrollbar max-w-full sm:max-w-[calc(365px*2+40px)] md:max-w-[calc(365px*3+40px*2)] lg:max-w-[calc(365px*4+40px*3)] mx-auto"
       >
         {product.map((product) => {
-          const variantId = product.variants?.edges?.[0]?.node?.id;
+        
           const tags = product.tags?.map((tag) => tag.toLowerCase());
 
           return (
@@ -120,16 +119,22 @@ export const ProductsFirst: React.FC<Props> = ({ product }) => {
                       ))}
                   </div>
 
-                  <AddToCartButton
-                    lines={[{ merchandiseId: variantId, quantity: 1 }]}
-                  >
-    <button
-    onClick={() => open("cart")}
-    className="bg-[#1A1A1A] text-white text-xs px-3 py-1.5 rounded-md font-medium hover:bg-[#2a2a2a] transition"
-  >
+              
+                    <button
+                     onClick={() =>
+                      open('preview', {
+                        title: product.title,
+                        image: product.featuredImage?.url || '',
+                        description: product.tags?.join(', '),
+                        price: product.priceRange?.minVariantPrice?.amount || '0',
+                        merchandiseId: product.variants?.edges?.[0]?.node?.id || '',
+                      })
+                    }
+                      className="bg-[#1A1A1A] text-white text-xs px-3 py-1.5 rounded-md font-medium hover:bg-[#2a2a2a] transition"
+                    >
                       Add • $49.00
                     </button>
-                  </AddToCartButton>
+                 
                 </div>
 
 
@@ -172,16 +177,23 @@ export const ProductsFirst: React.FC<Props> = ({ product }) => {
                     ))}
                   </div>
 
-                  <AddToCartButton
-                    lines={[{ merchandiseId: variantId, quantity: 1 }]}
-                  >
+           
+                
                     <button
-                      onClick={() => open("cart")}
+                      onClick={() =>
+                        open('preview', {
+                          title: product.title,
+                          image: product.featuredImage?.url || '',
+                          tags: product.tags,
+                          price: product.priceRange?.minVariantPrice?.amount || '0',
+                          merchandiseId: product.variants?.edges?.[0]?.node?.id || '',
+                        })
+                      }
                       className="block w-fit mx-auto bg-black text-white text-sm font-medium px-6 py-2.5 rounded-full hover:bg-gray-900 transition"
                     >
                       Add to Cart - $49.95
                     </button>
-                  </AddToCartButton>
+           
 
                   <p className="text-center underline text-sm text-black hover:text-gray-800 cursor-pointer mt-3">
                     View Full Details
