@@ -1,8 +1,5 @@
 import React, { useState } from "react";
 import { useAside } from '~/components/Aside';
-import { AddToCartButton } from "./AddToCartButton";
-import { Product } from "@shopify/hydrogen/storefront-api-types";
-
 
 export const PreviewAside: React.FC = () => {
   const { data, close } = useAside();
@@ -16,22 +13,43 @@ export const PreviewAside: React.FC = () => {
   const totalPrice = (pricePerUnit * quantity).toFixed(2);
 
   return (
-    <div className="relative flex flex-col p-4 sm:p-6 pt-8 sm:pt-10 gap-6">
+<div className="relative w-full h-full max-w-full flex flex-col overflow-hidden px-4 py-3 sm:gap-5 sm:w-125 xl:w-126 2xl:w-130 xl:gap-4 2xl:gap-4">
+      
+      <button
+        onClick={close}
+        className="absolute top-2 right-2 text-black hover:text-gray-700 text-2xl font-bold"
+        aria-label="Close"
+      >
+        ×
+      </button>
+
       {data.image && (
         <div className="flex justify-center">
           <img
             src={data.image}
             alt={data.title}
-            className="max-h-[280px] sm:max-h-[320px] object-contain"
+            className="sm:h-[300px] xl:h-[196px] 2xl:h-[300px]"
           />
         </div>
       )}
+      
       <h2 className="text-xl sm:text-2xl font-bold text-black text-center sm:text-left">
         {data.title}
       </h2>
 
+      <div className="flex justify-center sm:justify-start items-center gap-2 mt-2">
+        <div className="flex text-black">
+          {[...Array(5)].map((_, index) => (
+            <svg key={index} className="w-4 h-4 fill-black" viewBox="0 0 24 24">
+              <path d="M12 .587l3.668 7.568L24 9.423l-6 5.845L19.336 24 12 19.897 4.664 24 6 15.268 0 9.423l8.332-1.268z" />
+            </svg>
+          ))}
+        </div>
+        <p className="text-sm text-gray-600">(120 reviews)</p>
+      </div>
+
       {data.description && (
-        <div className="flex flex-wrap justify-center sm:justify-start gap-2">
+        <div className="flex flex-wrap justify-center sm:justify-start gap-2 mt-2">
           {data.description.split(',').map((tag: string, index: number) => (
             <div
               key={index}
@@ -44,8 +62,7 @@ export const PreviewAside: React.FC = () => {
         </div>
       )}
 
-      <div className="w-full flex flex-col gap-4 bg-gray-100 p-4 rounded-lg">
-
+      <div className="flex flex-col gap-2 bg-gray-100 p-4 rounded-lg">
         <div className="grid grid-cols-5 text-gray-500 font-semibold text-xs mb-2">
           <p>Variant</p>
           <p className="text-center">Quantity</p>
@@ -74,7 +91,7 @@ export const PreviewAside: React.FC = () => {
             >
               -
             </button>
-            <span className="w-1  text-center">{quantity}</span>
+            <span className="w-1 text-center">{quantity}</span>
             <button
               onClick={() => setQuantity(quantity + 1)}
               className="w-3 h-7 flex items-center justify-center border border-gray-400 rounded-md text-lg font-bold hover:bg-gray-200 transition"
@@ -90,9 +107,7 @@ export const PreviewAside: React.FC = () => {
         </div>
       </div>
 
-
       <div className="flex flex-col sm:flex-row gap-4 bg-gray-100 p-4 rounded-lg">
-    
         <label className={`flex-1 cursor-pointer border rounded-lg p-4 ${purchaseType === 'one-time' ? 'border-black' : 'border-transparent'}`}>
           <input
             type="radio"
@@ -109,7 +124,6 @@ export const PreviewAside: React.FC = () => {
           </div>
         </label>
 
-      
         <label className={`flex-1 cursor-pointer border rounded-lg p-4 ${purchaseType === 'subscription' ? 'border-black' : 'border-transparent'}`}>
           <input
             type="radio"
@@ -131,7 +145,7 @@ export const PreviewAside: React.FC = () => {
       </div>
 
       <button
-        className="w-full border border-black bg-black text-white py-4 text-lg font-semibold rounded focus:outline-none focus:ring-2 focus:ring-blue-600 transition flex justify-between items-center px-6 mt-2"
+        className="border border-black bg-black text-white py-4 text-lg font-semibold rounded focus:outline-none focus:ring-2 focus:ring-blue-600 transition flex justify-between items-center px-6 mt-2"
         onClick={() => {
           console.log('Add to Cart - Type:', purchaseType, 'Quantity:', quantity);
         }}
@@ -139,7 +153,6 @@ export const PreviewAside: React.FC = () => {
         <span>Add to Cart</span>
         <span>${totalPrice}</span>
       </button>
-
 
       <p className="text-center text-sm text-black underline hover:text-gray-700 mt-4 cursor-pointer">
         View Full Details

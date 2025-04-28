@@ -52,29 +52,22 @@ export function Aside({
       className="fixed inset-0 z-150 flex justify-end bg-black/40 pointer-events-none"
     >
     
-    <div className="relative w-full sm:w-full xl:w-[540px] 2xl:w-[540px] h-[1105px] bg-white shadow-lg flex flex-col pointer-events-auto">
+<div className="relative  sm:w-full xl:w-[540px] 2xl:w-[540px]  bg-white shadow-lg flex flex-col pointer-events-auto">
 
-        <header className="flex items-center justify-between p-4 border-b">
-          <h3 className="text-lg font-semibold">{heading}</h3>
-          <button
-            className="text-2xl font-bold"
-            onClick={close}
-            aria-label="Close"
-          >
-            &times;
-          </button>
-       
-        </header>
-        <main className="flex-1 overflow-y-auto p-4 flex flex-col">
-          {children}
-        </main>
-      </div>
 
-      <button
-        className="absolute inset-0 w-full h-full"
-        onClick={close}
-        aria-label="Close aside"
-      />
+
+
+  <main className="flex-1 overflow-y-auto p-4 flex flex-col">
+    {children}
+  </main>
+</div>
+
+
+<button
+  className="absolute inset-0 w-20 h-full"
+  onClick={close}
+  aria-label="Close aside"
+></button>
     </div>
   );
 }
