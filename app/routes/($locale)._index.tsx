@@ -26,6 +26,10 @@ import FeaturedBanner from "~/components/FeaturedBanner";
 import AsideModals from "~/components/AsidesModals";
 
 
+
+
+
+
 type ExtendedProduct = Product & {
   metafield?: {
     value: string;
@@ -37,7 +41,6 @@ type ExtendedProduct = Product & {
 export async function loader({ context }: LoaderFunctionArgs) {
   const supplements = await getProductCollection("supplements", context);
   const bestseller = await getProductCollection("bestseller", context);
-
   return defer({
     supplements,
     bestseller,
@@ -45,11 +48,14 @@ export async function loader({ context }: LoaderFunctionArgs) {
     proteinpower: getProductCollection("proteinpower", context),
     blogs: getBlog("balanced-diet-1", context),
     collection: getVideoCollection("videos", context),
+
   });
 }
 
 export const Homepage: React.FC = () => {
-  const { supplements, bundles, proteinpower, blogs, collection } =
+
+
+  const { supplements, bundles, proteinpower, blogs, collection,  } =
     useLoaderData<{
       supplements: Product[];
       bestseller: Product[];
@@ -57,6 +63,7 @@ export const Homepage: React.FC = () => {
       proteinpower: Promise<Product[]>;
       blogs: Promise<BlogArticle[]>;
       collection: Promise<ExtendedProduct[]>;
+
     }>();
 
   return (
@@ -98,11 +105,14 @@ export const Homepage: React.FC = () => {
         <Await resolve={blogs}>
           {(data) => <Articles blogs={data} />}
         </Await>
-      </Suspense> 
+      </Suspense>
 
-      <InstagramComponent /> 
 
-      <AsideModals/>
+
+      <InstagramComponent />
+
+
+      <AsideModals />
     </div>
 
 

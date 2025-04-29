@@ -10,40 +10,43 @@ import type {CartLineUpdateInput} from '@shopify/hydrogen/storefront-api-types';
 
 type CartLine = OptimisticCartLine<CartApiQueryFragment>;
 
-export function CartLineItem({line, layout}: {line: CartLine; layout: CartLayout}) {
-  const {id, merchandise} = line;
-  const {product, title, image, selectedOptions} = merchandise;
+export function CartLineItem({ line, layout }: { line: CartLine; layout: CartLayout }) {
+  const { id, merchandise } = line;
+  const { product, title, image, selectedOptions } = merchandise;
   const lineItemUrl = useVariantUrl(product.handle, selectedOptions);
-  const {close} = useAside();
+  const { close } = useAside();
 
   return (
-    <li className="w-full bg-[#F9F9F9] p-4 rounded-xl flex flex-col gap-3">
-      <div className="bg-white p-4 rounded-lg flex gap-4 items-start shadow-sm">
+    <li className="w-full  bg-[#F9F9F9] p-4 rounded-xl flex flex-col gap-4 sm:gap-6 xl:gap-6 2xl:gap-6">
+      <div className="bg-white p-2 sm:p-5 xl:p-6 2xl:p-6 rounded-lg flex flex-col sm:flex-row gap-4 sm:gap-6 xl:gap-6 shadow-sm">
         {image && (
           <Image
             alt={title}
             data={image}
-            width={80}
-            height={80}
-            className="rounded-md"
+            width={100}
+            height={100}
+            className="rounded-md w-24 h-24 sm:w-28 sm:h-28 object-contain"
           />
         )}
-        <div className="flex flex-col justify-between w-full">
-          <div className="flex justify-between items-start">
+
+        <div className="flex flex-col justify-between w-full gap-3 sm:gap-4">
+          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2">
             <Link
               prefetch="intent"
               to={lineItemUrl}
               onClick={() => layout === 'aside' && close()}
-              className="text-sm font-semibold hover:underline"
+              className="text-base sm:text-sm xl:text-base font-semibold hover:underline max-w-[90%] break-words"
             >
               {product.title}
             </Link>
+
             <ProductPrice price={line?.cost?.totalAmount} />
           </div>
 
-          <div className="flex items-center justify-between mt-4">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4 mt-2">
             <CartLineQuantity line={line} />
-            <div className="border-dashed border-2 border-gray-300 rounded-md px-3 py-2 flex items-center gap-2 text-xs text-gray-700">
+
+            <div className="border-dashed border-2 border-gray-300 rounded-md px-3 py-2 text-xs sm:text-sm text-gray-700 flex items-center gap-2 sm:mt-0">
               <RotateCcw className="w-4 h-4" />
               Subscribe & Save 10%
             </div>

@@ -1,7 +1,8 @@
 import React, { useRef } from "react";
 import { Product } from "@shopify/hydrogen/storefront-api-types";
-import { useAside } from "./Aside";
+
 import { FaStar } from "react-icons/fa";
+import { useAside } from "./Aside";
 
 type Props = {
   product: Product[];
