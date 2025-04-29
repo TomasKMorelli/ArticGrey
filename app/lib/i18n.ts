@@ -4,6 +4,7 @@ export interface I18nLocale extends I18nBase {
   pathPrefix: string;
 }
 
+
 export function getLocaleFromRequest(request: Request): I18nLocale {
   const url = new URL(request.url);
   const firstPathPart = url.pathname.split('/')[1]?.toUpperCase() ?? '';

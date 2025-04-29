@@ -13,7 +13,7 @@ export type CartMainProps = {
   layout: CartLayout;
 };
 
-export function CartMain({layout, cart: originalCart}: CartMainProps) {
+export function CartMain({ layout, cart: originalCart }: CartMainProps) {
   const cart = useOptimisticCart(originalCart);
 
   const linesCount = Boolean(cart?.lines?.nodes?.length || 0);
@@ -29,7 +29,7 @@ export function CartMain({layout, cart: originalCart}: CartMainProps) {
       <div className="cart-details">
         <CartHeader cartCount={cart?.totalQuantity ?? 0} />
         <ShippingProgress />
-        <div aria-labelledby="cart-lines">
+        <div aria-labelledby="cart-lines" className="px-4 sm:px-6 xl:px-[30px] 2xl:px-[30px]">
           <ul className="flex flex-col gap-4">
             {(cart?.lines?.nodes ?? []).map((line) => (
               <CartLineItem key={line.id} line={line} layout={layout} />
@@ -42,31 +42,31 @@ export function CartMain({layout, cart: originalCart}: CartMainProps) {
   );
 }
 
-function CartEmpty({
-  hidden = false,
-}: {
-  hidden: boolean;
-  layout?: CartMainProps['layout'];
-}) {
-  const {close} = useAside();
+function CartEmpty({ hidden = false }: { hidden: boolean; layout?: CartMainProps['layout'] }) {
+  const { close } = useAside();
   return (
-    <div hidden={hidden}>
-      <br />
-      <p>Looks like you haven’t added anything yet, let’s get you started!</p>
-      <br />
-      <Link to="/collections" onClick={close} prefetch="viewport">
+    <div hidden={hidden} className="px-4 sm:px-6 xl:px-[30px] py-12 text-center">
+      <p className="text-sm sm:text-base mb-4">
+        Looks like you haven’t added anything yet, let’s get you started!
+      </p>
+      <Link
+        to="/collections"
+        onClick={close}
+        prefetch="viewport"
+        className="text-black font-semibold underline hover:text-gray-800"
+      >
         Continue shopping →
       </Link>
     </div>
   );
 }
 
-function CartHeader({cartCount}: {cartCount: number}) {
-  const {close} = useAside();
+function CartHeader({ cartCount }: { cartCount: number }) {
+  const { close } = useAside();
   return (
-    <div className="flex items-center justify-between border-b border-gray-200 px-[30px] pt-[26px] pb-[24px]">
+    <div className="flex items-center justify-between border-b border-gray-200 px-4 sm:px-6 xl:px-[30px] pt-6 pb-5">
       <div className="flex items-center gap-2">
-        <h2 className="text-xl font-bold">Your Bag</h2>
+        <h2 className="text-lg sm:text-xl font-bold">Your Bag</h2>
         <span className="text-xs text-white bg-black rounded-full w-5 h-5 flex items-center justify-center">
           {cartCount}
         </span>
@@ -77,17 +77,15 @@ function CartHeader({cartCount}: {cartCount: number}) {
     </div>
   );
 }
+
 function ShippingProgress() {
   return (
-    <div className="px-[30px] pt-4 pb-6 text-center">
+    <div className="px-4 sm:px-6 xl:px-[30px] pt-4 pb-6 text-center">
       <p className="text-sm mb-2">
         You are <strong>$45.44 away</strong> from eligible for free shipping
       </p>
       <div className="relative w-full h-2 bg-gray-200 rounded-full overflow-hidden">
-        <div
-          className="h-2 bg-black rounded-full"
-          style={{ width: '43%' }}
-        ></div>
+        <div className="h-2 bg-black rounded-full" style={{ width: '43%' }} />
       </div>
       <div className="flex justify-between text-xs text-gray-500 mt-1">
         <span>$0</span>

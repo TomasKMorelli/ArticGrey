@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import type { Product } from "@shopify/hydrogen/storefront-api-types";
 import { useAside } from "./Aside";
+import { AddToCartButton } from "./AddToCartButton";
 
 type Props = {
   collection: (Product & {
@@ -149,19 +150,24 @@ export const Results: React.FC<Props> = ({ collection }) => {
                   </p>
                 </div>
                 <div className="ml-auto mt-2 w-7 h-7 bg-black text-white rounded-full flex items-center justify-center border border-black">
-
-                  <button onClick={() =>
-                    open('preview', {
-                      title: product.title,
-                      image: product.featuredImage?.url || '',
-                      description: product.tags?.join(', '),
-                      price: product.priceRange?.minVariantPrice?.amount || '0',
-                      merchandiseId: product.variants?.edges?.[0]?.node?.id || '',
-                    })
-                  } className="text-base">
-                    +
-                  </button>
-
+                  <AddToCartButton lines={[
+                    {
+                      merchandiseId: variantId,
+                      quantity: 1,
+                    },
+                  ]}>
+                    <button onClick={() =>
+                      open('cart', {
+                        title: product.title,
+                        image: product.featuredImage?.url || '',
+                        description: product.tags?.join(', '),
+                        price: product.priceRange?.minVariantPrice?.amount || '0',
+                        merchandiseId: product.variants?.edges?.[0]?.node?.id || '',
+                      })
+                    } className="text-base">
+                      +
+                    </button>
+                  </AddToCartButton>
                 </div>
               </div>
             </div>
