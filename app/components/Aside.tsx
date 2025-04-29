@@ -49,7 +49,7 @@ export function Aside({
     <div
       aria-modal
       role="dialog"
-      className="fixed inset-0 z-150 flex justify-end bg-black/40 pointer-events-none"
+      className=" fixed inset-0 z-150 flex justify-end bg-black/40 pointer-events-none"
     >
     
 <div className="relative  sm:w-full xl:w-[540px] 2xl:w-[540px]  bg-white shadow-lg flex flex-col pointer-events-auto">
