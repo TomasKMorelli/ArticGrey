@@ -60,5 +60,12 @@ Dynamic "Add to Cart" Button – Built a custom, interactive Add to Cart compone
 
 GraphQL API Handling – Integrated robust queries with proper error handling and loading states.
 
-Responsive Design – Followed mobile-first best practices with pixel-accurate layout matching based on Figma designs.
+SESSION_SECRET= uncmfrtd-session
+
+PUBLIC_CUSTOMER_ACCOUNT_API_CLIENT_ID=shp_f0f13cf2-fc99-47c0-8876-95b64eff107f
+PUBLIC_CUSTOMER_ACCOUNT_API_URL=https://shopify.com/authentication/92993454380
+PUBLIC_STORE_DOMAIN=uncmfrtd-com.myshopify.com
+PUBLIC_STOREFRONT_API_TOKEN=26a10cb2f05b163932950fb03f669929
+PUBLIC_STOREFRONT_ID=54399
+
 
